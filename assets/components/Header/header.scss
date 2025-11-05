@@ -1,0 +1,22 @@
+@use '../../styles/helpers' as *;
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: rem(24);
+
+  nav ul {
+    @include fluid-text(16, 14);
+    display: flex;
+    align-items: center;
+    gap: fluid-to-laptop(33, 20);
+
+    li a {
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+  }
+}
+

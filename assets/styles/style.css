@@ -284,7 +284,18 @@ a[class] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-block: clamp(0.75rem, 0.5082644628rem + 0.9917355372vw, 1.5rem);
+  padding-block: 1.5rem;
+}
+.header nav ul {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, -2rem + 4.0625vw, 2.0625rem);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.logo {
+  min-width: clamp(8.125rem, 7.4602272727rem + 2.7272727273vw, 10.1875rem);
 }
 
 /*# sourceMappingURL=style.css.map */
