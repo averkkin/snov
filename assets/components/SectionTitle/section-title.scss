@@ -1,0 +1,31 @@
+@use '../../styles/helpers' as *;
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: rem(24);
+
+  &__quote {
+    display: flex;
+    flex-direction: column;
+    gap: rem(16);
+    width: fluid(343, 270);
+
+    & p {
+      @include fluid-text(22, 16);
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--color-pink);
+    }
+
+    & span {
+      @include fluid-text(14, 12);
+
+      color: var(--color-black-60);
+      font-weight: 500;
+      font-style: italic;
+      text-transform: uppercase;
+    }
+  }
+}

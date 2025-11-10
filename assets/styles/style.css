@@ -130,7 +130,7 @@ input[type=file] {
   --color-black-60: #7D7D7D;
   --color-black-75: #5D5D5D;
   --color-gray-60: #999999;
-  --color-gray-50: #929292;
+  --color-gray-50: #eeeeee;
   --border: var(--border-width-s) solid var(--color-gray);
   --border-width-l: 4px;
   --border-width-m: 3px;

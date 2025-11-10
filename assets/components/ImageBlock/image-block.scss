@@ -1,0 +1,23 @@
+@use '../../styles/helpers' as *;
+
+.image-block {
+  display: flex;
+  width: 100%;
+  height: fluid(800, 270);
+  position: relative;
+  padding-top: var(--section-padding-y);
+
+  &__h2 {
+    position: absolute;
+    padding-block: var(--section-padding-y);
+  }
+
+  img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+    pointer-events: none;
+  }
+}

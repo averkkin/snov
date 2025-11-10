@@ -1,0 +1,10 @@
+@use '../../styles/helpers' as *;
+
+.burger-button {
+  text-transform: uppercase;
+  font-weight: 500;
+
+  @include hover {
+    color: var(--color-pink);
+  }
+}

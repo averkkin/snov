@@ -26,7 +26,7 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  color: var(--color-white);
+  color: var(--color-black);
 }
 
 h1, .h1 {
@@ -36,9 +36,21 @@ h1, .h1 {
 }
 
 h2, .h2 {
-  @include fluid-text(48, 24);
+  @include fluid-text(40, 20);
 
   font-weight: 700;
+  text-transform: uppercase;
+}
+
+.h2 {
+
+  &--white {
+    color: var(--color-white);
+  }
+
+  &--large {
+    @include fluid-text(52, 26);
+  }
 }
 
 h3, .h3 {

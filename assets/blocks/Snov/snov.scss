@@ -1,0 +1,24 @@
+@use '../../styles/helpers' as *;
+
+.snov {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  gap: fluid(25, 17);
+  padding-top: var(--section-padding-y);
+
+  &__img {
+    width: 100%;
+    pointer-events: none;
+  }
+
+  &__text {
+    @include fluid-text(27, 18);
+
+    color: var(--color-gray);
+    text-transform: uppercase;
+    font-weight: 700;
+    width: fluid(436, 281);
+  }
+}

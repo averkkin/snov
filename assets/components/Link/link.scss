@@ -1,0 +1,11 @@
+@use '../../styles/helpers' as *;
+
+.link {
+  @include fluid-text(16, 14);
+  text-decoration: underline !important;
+  cursor: pointer;
+
+  &--blue {
+    color: var(--color-blue);
+  }
+}

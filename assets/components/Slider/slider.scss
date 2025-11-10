@@ -1,0 +1,14 @@
+@use '../../styles/helpers' as *;
+
+.slider-large{
+  display: flex;
+  flex-direction: column;
+  gap: fluid(40, 32);
+  padding-top: var(--section-padding-y);
+}
+
+.slider {
+  width: 100%;
+  height: fluid(584, 293);
+  background-color: #ececec;
+}

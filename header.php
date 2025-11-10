@@ -27,23 +27,22 @@
 
     <nav class="header__menu">
         <ul class="header__menu-items">
-            <li class="header__menu-item"><a href="">Каталог</a></li>
-            <li class="header__menu-item"><a href="">О нас</a></li>
-            <li class="header__menu-item"><a href="">Контакты</a></li>
-            <li class="header__menu-item"><a href="">B2B</a></li>
+            <li class="hidden-tablet"><a href="">Каталог</a></li>
+            <li class="hidden-tablet"><a href="">О нас</a></li>
+            <li class="hidden-tablet"><a href="">Контакты</a></li>
+            <li class="hidden-tablet"><a href="">B2B</a></li>
         </ul>
+        <button class="visible-tablet burger-button" type="button">Меню</button>
     </nav>
 
     <a href="/"><img src="<?php echo get_template_directory_uri();?>/assets/icons/logo.svg" alt="Логотип СНОВ" aria-label="Логотип СНОВ" class="header__logo logo" width="163" height="35"></a>
 
     <nav class="header__menu">
         <ul class="header__menu-items">
-            <li class="header__menu-item"><a href="">Cертификат</a></li>
-            <li class="header__menu-item"><a href="">Личный кабинет</a></li>
-            <li class="header__menu-item"><a href="">Корзина (0)</a></li>
+            <li class="hidden-tablet"><a href="">Cертификат</a></li>
+            <li class="hidden-tablet"><a href="">Личный кабинет</a></li>
+            <li><a href="">Корзина (0)</a></li>
         </ul>
     </nav>
 
-</header>
-
-<!-- #masthead -->
+</header><!-- #masthead -->

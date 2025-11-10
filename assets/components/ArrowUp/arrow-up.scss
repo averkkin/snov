@@ -1,0 +1,19 @@
+@use '../../styles/helpers' as *;
+
+.arrow-up {
+  @include flex-center();
+
+  min-width: fluid(56, 40);
+  min-height: fluid(56, 40);
+  max-width: fluid(56, 40);
+  max-height: fluid(56, 40);
+  border-radius: var(--border-radius-m);
+  background-color: var(--color-black-05);
+
+  cursor: pointer;
+  transition: var(--transition-duration);
+
+  @include hover {
+    background-color: var(--color-black-10);
+  }
+}

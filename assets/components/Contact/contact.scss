@@ -1,0 +1,23 @@
+@use '../../styles/helpers' as *;
+
+.contact {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  row-gap: rem(11);
+  column-gap: fluid(30, 16);
+  grid-auto-rows: auto;
+  align-items: start;
+  height: fit-content;
+
+  &__name {
+    @include fluid-text(14, 12);
+    color: var(--color-gray-50);
+    font-weight: 400;
+  }
+
+  &__value {
+    @include fluid-text(16, 14);
+    color: var(--color-black);
+    font-weight: 600;
+  }
+}

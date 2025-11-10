@@ -5,7 +5,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-block: rem(24);
+  padding-block: rem(32);
+  position: relative;
 
   nav ul {
     @include fluid-text(16, 14);
@@ -17,6 +18,10 @@
       text-transform: uppercase;
       font-weight: 500;
     }
+  }
+
+  &__logo {
+    @include abs-center;
   }
 }
 

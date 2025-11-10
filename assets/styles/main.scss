@@ -1,3 +1,4 @@
+// start build
 @use './helpers' as *;
 @use './normalize.css';
 @use './fonts.scss';
@@ -5,5 +6,20 @@
 @use './utils.scss';
 @use './globals.scss';
 
+// components
 @use '../components/Header/header.scss';
 @use '../components/Logo/logo.scss';
+@use '../components/BurgerButton/burger-button.scss';
+@use '../components/Button/button.scss';
+@use '../components/Slider/slider.scss';
+@use '../components/SectionTitle/section-title.scss';
+@use '../components/ImageBlock/image-block.scss';
+@use '../components/Footer/footer.scss';
+@use '../components/Link/link.scss';
+@use '../components/Contact/contact.scss';
+@use '../components/ArrowUp/arrow-up.scss';
+
+// blocks
+@use '../blocks/Hero/hero.scss';
+@use '../blocks/Snov/snov.scss';
+
