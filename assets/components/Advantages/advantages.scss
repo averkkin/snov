@@ -1,0 +1,49 @@
+@use '../../styles/helpers' as *;
+
+.advantages {
+  display: flex;
+  justify-content: space-between;
+  gap: fluid(20, 10);
+  flex-wrap: wrap;
+
+  @include mobile {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: rem(32);
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: fluid(24, 16);
+    width: 100%;
+    flex: 1;
+
+    & img {
+      width: 100%;
+      border-radius: var(--border-radius-m);
+
+      @include mobile {
+        border-radius: var(--border-radius-s);
+      }
+    }
+
+    @include mobile {
+      min-width: 100%;
+    }
+  }
+
+  &__subtitle {
+    @include fluid-text(16, 14);
+    font-weight: 600;
+    width: 100%;
+
+    &--s {
+      max-width: rem(307);
+    }
+
+    &--m {
+      max-width: rem(448);
+    }
+  }
+}

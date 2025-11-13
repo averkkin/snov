@@ -7,6 +7,12 @@
   padding-inline: var(--container-padding-x);
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: fluid(80, 50);
+}
+
 .visually-hidden {
   @include visually-hidden;
 }

@@ -35,7 +35,7 @@
     $container-laptop-width
   )};
 
-  --container-padding-x: 40px;
+  --container-padding-x: #{fluid(40, 30)};
 
   --section-padding-y: #{fluid(80, 30)};
 

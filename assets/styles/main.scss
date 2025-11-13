@@ -19,10 +19,13 @@
 @use '../components/Contact/contact.scss';
 @use '../components/ArrowUp/arrow-up.scss';
 @use '../components/Bullit/bullit.scss';
+@use '../components/Advantages/advantages.scss';
+@use '../components/Form/form.scss';
 
 // blocks
 @use '../blocks/Hero/hero.scss';
 @use '../blocks/Snov/snov.scss';
 @use '../blocks/CompanyDetails/company-details.scss';
 @use '../blocks/GiftCert/gift-cert.scss';
+@use '../blocks/Callback/callback.scss';
 

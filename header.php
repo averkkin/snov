@@ -28,7 +28,7 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<header class="header container">
+<header class="header container" id="header">
 
     <nav class="header__menu">
         <ul class="header__menu-items">

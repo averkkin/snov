@@ -5,6 +5,14 @@
   text-decoration: underline !important;
   cursor: pointer;
 
+  &--medium {
+    font-weight: 500;
+  }
+
+  &--pink {
+    color: var(--color-pink);
+  }
+
   &--blue {
     color: var(--color-blue);
   }

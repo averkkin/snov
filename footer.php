@@ -54,7 +54,7 @@
                     <span class="contact__name">Адрес:</span>
                     <span class="contact__value">г. Иваново ул. 11-я Завокзальная, д.40 </span>
             </div>
-            <div class="arrow-up"><img src="<?php echo get_template_directory_uri();?>/assets/icons/arrow-up.svg" alt="Наверх"></div>
+            <a href="#header"><div class="arrow-up"><img src="<?php echo get_template_directory_uri();?>/assets/icons/arrow-up.svg" alt="Наверх"></div></a>
         </div>
 
     </div>
