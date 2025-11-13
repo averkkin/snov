@@ -1,0 +1,18 @@
+@use '../../styles/helpers' as *;
+
+.bullit {
+  @include fluid-text(16, 15);
+
+  display: flex;
+  align-items: center;
+  gap: rem(8);
+  font-weight: 400;
+
+  &::before {
+    content: '';
+    display: block;
+    background: var(--icon-path-bullit) no-repeat center / contain;
+    min-height: rem(12);
+    min-width: rem(12);
+  }
+}

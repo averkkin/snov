@@ -18,8 +18,11 @@
 @use '../components/Link/link.scss';
 @use '../components/Contact/contact.scss';
 @use '../components/ArrowUp/arrow-up.scss';
+@use '../components/Bullit/bullit.scss';
 
 // blocks
 @use '../blocks/Hero/hero.scss';
 @use '../blocks/Snov/snov.scss';
+@use '../blocks/CompanyDetails/company-details.scss';
+@use '../blocks/GiftCert/gift-cert.scss';
 
