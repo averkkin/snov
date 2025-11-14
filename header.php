@@ -20,8 +20,14 @@
         :root {
             --icon-path-bullit: url(<?php echo get_template_directory_uri(); ?>/assets/icons/bullit.svg);
         }
-
     </style>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 	<?php wp_head(); ?>
 </head>
 
@@ -40,7 +46,7 @@
         <button class="visible-tablet burger-button" type="button">Меню</button>
     </nav>
 
-    <a href="/"><img src="<?php echo get_template_directory_uri();?>/assets/icons/logo.svg" alt="Логотип СНОВ" aria-label="Логотип СНОВ" class="header__logo logo" width="163" height="35"></a>
+    <a href="<?php echo home_url('/'); ?>"><img src="<?php echo get_template_directory_uri();?>/assets/icons/logo.svg" alt="Логотип СНОВ" aria-label="Логотип СНОВ" class="header__logo logo" width="163" height="35"></a>
 
     <nav class="header__menu">
         <ul class="header__menu-items">
@@ -51,3 +57,4 @@
     </nav>
 
 </header><!-- #masthead -->
+

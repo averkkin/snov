@@ -21,6 +21,10 @@
 @use '../components/Bullit/bullit.scss';
 @use '../components/Advantages/advantages.scss';
 @use '../components/Form/form.scss';
+@use '../components/ProductsSlider/products-slider.scss';
+@use '../components/ProductCard/product-card.scss';
+@use '../components/SingleProduct/single-product.scss';
+@use '../components/ProductAccordion/product-accordion.scss';
 
 // blocks
 @use '../blocks/Hero/hero.scss';
@@ -28,4 +32,6 @@
 @use '../blocks/CompanyDetails/company-details.scss';
 @use '../blocks/GiftCert/gift-cert.scss';
 @use '../blocks/Callback/callback.scss';
+@use '../blocks/About/about.scss';
+@use '../blocks/ThreeImages/three-images.scss';
 

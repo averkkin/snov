@@ -20,4 +20,11 @@
     z-index: -1;
     pointer-events: none;
   }
+
+  &--large {
+
+    @include mobile {
+      height: rem(570);
+    }
+  }
 }

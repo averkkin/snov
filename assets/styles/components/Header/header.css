@@ -1,0 +1,17 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 1.5rem;
+}
+.header nav ul {
+  font-size: clamp(0.875rem, 0.8347107438rem + 0.1652892562vw, 1rem);
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, -2rem + 4.0625vw, 2.0625rem);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/*# sourceMappingURL=header.css.map */

@@ -16,7 +16,10 @@
     <div class="footer__wrapper">
 
         <div class="footer__left-content">
-            <div class="logo footer__logo"><img src="<?php echo get_template_directory_uri();?>/assets/icons/logo.svg" alt="Логотип СНОВ"></div>
+            <div class="logo footer__logo logo--footer">
+                <a href="<?php echo home_url('/'); ?>"><img src="<?php echo get_template_directory_uri();?>/assets/icons/logo.svg" alt="Логотип СНОВ"></a>
+                <button type="button" class="footer__cart visible-mobile">Корзина (<span>0</span>)</button>
+            </div>
             <div class="footer__site-info">
                 <span>Все права защищены.</span>
                 <span>ИП Новожилов Николай Аркадьевич</span>
@@ -39,22 +42,23 @@
                     <ul>
                         <li><a href="">Сертификат</a></li>
                         <li><a href="">Личный кабинет</a></li>
-                        <li><a href="">Корзина (0)</a></li>
+                        <li class="hidden-mobile"><button type="button" class="footer__cart">Корзина (<span>0</span>)</button></li>
                     </ul>
                 </nav>
+                <a href="#header" class="visible-mobile"><div class="arrow-up"><img src="<?php echo get_template_directory_uri();?>/assets/icons/arrow-up.svg" alt="Наверх"></div></a>
             </div>
             <div class="contact">
 
                     <span class="contact__name">Телефон:</span>
-                    <a class="footer__contact-value contact__value">+7 (495) 525-40-10</a>
+                    <a class="footer__contact-value contact__value" href="tel:+7 (495) 525-40-10">+7 (495) 525-40-10</a>
 
                     <span class="contact__name">Почта:</span>
-                    <a class="contact__value">info@snov.group</a>
+                    <a class="contact__value" href="mailto:info@snov.group">info@snov.group</a>
 
                     <span class="contact__name">Адрес:</span>
                     <span class="contact__value">г. Иваново ул. 11-я Завокзальная, д.40 </span>
             </div>
-            <a href="#header"><div class="arrow-up"><img src="<?php echo get_template_directory_uri();?>/assets/icons/arrow-up.svg" alt="Наверх"></div></a>
+            <a href="#header" class="hidden-mobile"><div class="arrow-up"><img src="<?php echo get_template_directory_uri();?>/assets/icons/arrow-up.svg" alt="Наверх"></div></a>
         </div>
 
     </div>

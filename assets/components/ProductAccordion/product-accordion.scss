@@ -1,0 +1,67 @@
+@use '../../styles/helpers' as *;
+
+.product-accordion {
+  margin-top: 40px;
+  border-top: 1px solid #e3e3e3;
+
+  &__item {
+    border-bottom: 1px solid #e3e3e3;
+
+    &.is-open .product-accordion__icon {
+      transform: rotate(45deg); // из + делаем ×
+    }
+  }
+
+  &__header {
+    width: 100%;
+    padding: 18px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    border: 0;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  &__icon {
+    width: 14px;
+    height: 14px;
+    position: relative;
+    transition: transform 0.2s ease;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 50%;
+      width: 14px;
+      height: 1.5px;
+      background: #000;
+      transform: translate(-50%, -50%);
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+  }
+
+  &__body {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.25s ease;
+    padding-right: 40px;
+
+    p {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__item.is-open &__body {
+    // max-height управляем из JS
+    padding-bottom: 18px;
+  }
+}

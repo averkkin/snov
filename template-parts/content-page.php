@@ -14,7 +14,13 @@
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 
-	<?php snov_group_post_thumbnail(); ?>
+    <?php
+        if ( function_exists( 'snov_group_post_thumbnail' ) ) {
+            snov_group_post_thumbnail();
+        } elseif ( has_post_thumbnail() ) {
+            the_post_thumbnail();
+        }
+    ?>
 
 	<div class="entry-content">
 		<?php

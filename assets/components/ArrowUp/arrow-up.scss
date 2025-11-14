@@ -16,4 +16,8 @@
   @include hover {
     background-color: var(--color-black-10);
   }
+
+  @include mobile {
+    border-radius: var(--border-radius-s);
+  }
 }

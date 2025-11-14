@@ -1,5 +1,11 @@
 @use '../../styles/helpers' as *;
 
 .logo {
-  min-width: fluid(163, 130);
+  min-width: fluid(163, 80);
+  width: fluid(163, 80);
+
+  &--footer {
+    min-width: fluid(163, 130);
+    width: fluid(163, 130);
+  }
 }

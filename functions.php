@@ -27,6 +27,11 @@ add_action('after_setup_theme', 'snov_group_setup');
 
 function snov_group_scripts() {
     wp_enqueue_style('main-style', get_template_directory_uri() . '/assets/styles/style.css', [], _S_VERSION);
-    wp_enqueue_script('main-js', get_template_directory_uri() . '/js/main.js', [], _S_VERSION, true);
 }
 add_action('wp_enqueue_scripts', 'snov_group_scripts');
+
+// include WooCommerce
+require_once get_template_directory() . '/inc/woocommerce.php';
+
+// include custom scripts
+require_once get_template_directory() . '/inc/scripts.php';

@@ -23,6 +23,12 @@
     justify-content: space-between;
     border-top: var(--border);
 
+    @include mobile {
+      display: flex;
+      gap: rem(40);
+      flex-direction: column;
+    }
+
     &:first-child {
       padding-top: fluid(60, 40);
     }
@@ -54,9 +60,11 @@
   &__right-content {
     display: flex;
     justify-content: space-between;
+    gap: rem(20);
     //gap: fluid(145, 32);
 
     @include mobile {
+      gap: rem(40);
       flex-direction: column;
     }
   }
@@ -64,11 +72,12 @@
   &__menu {
     display: flex;
     justify-content: space-between;
-    gap: fluid(98, 49);
+    gap: fluid(98, 5);
     width: fit-content;
 
     @include mobile {
-      flex-direction: column;
+      width: 100%;
+      //flex-direction: column;
     }
 
     & nav ul {
@@ -91,6 +100,9 @@
     gap: fluid(78, 10);
 
     @include mobile {
+      gap: fluid(15, 7);
+      align-items: flex-start;
+      justify-content: flex-start;
       flex-direction: column;
     }
   }
@@ -105,6 +117,24 @@
 
       color: var(--color-gray-60);
       font-weight: 400;
+    }
+  }
+
+  &__logo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__cart {
+    @include fluid-text(16, 14);
+
+    font-weight: 500;
+    text-transform: uppercase;
+
+    @include hover {
+      color: var(--color-pink);
     }
   }
 
