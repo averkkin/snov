@@ -58,4 +58,20 @@ export default function productSizeSelect() {
             }
         });
     });
+
+    const priceEl = document.querySelector('.dynamic-price');
+    if (!priceEl) return;
+
+    // когда цена вариации обновлена WooCommerce → показываем
+    jQuery('form.variations_form').on('show_variation', function(event, variation) {
+        priceEl.innerHTML = variation.price_html;
+        priceEl.classList.add('ready');
+    });
+
+    // если вариация сброшена → показываем диапазон
+    jQuery('form.variations_form').on('hide_variation', function() {
+        const defaultPrice = priceEl.dataset.defaultPrice;
+        priceEl.innerHTML = defaultPrice;
+        priceEl.classList.add('ready');
+    });
 }

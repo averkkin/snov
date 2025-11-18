@@ -17,7 +17,6 @@
     }
   }
 
-  /* ----- THUMBS ----- */
   &__thumbs {
     margin-top: 20px;
     width: 100%;
@@ -43,8 +42,7 @@
   }
 }
 
-/* ----- MOBILE: скрываем миниатюры ----- */
-@media (max-width: 767px) {
+@include mobile{
   .product-gallery__thumbs {
     display: none;
   }
@@ -67,3 +65,14 @@
 
 .thumbs-swiper-button-prev { left: 0; }
 .thumbs-swiper-button-next { right: 0; }
+
+.swiper-pagination-bullet {
+  background: rgba(38, 38, 38, 0.4);
+
+  &-active {
+    background: transparent;
+    border: 2px solid var(--color-black);
+    width: rem(10);
+    height: rem(10);
+  }
+}

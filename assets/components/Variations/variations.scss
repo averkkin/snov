@@ -90,3 +90,24 @@
     display: block;
   }
 }
+
+.woocommerce-variation-price {
+  display: none !important;
+}
+
+.dynamic-price {
+  visibility: hidden;
+}
+.dynamic-price.ready {
+  visibility: visible;
+}
+
+.woocommerce-variation-description {
+  @include fluid-text(16, 15);
+  font-weight: 400;
+  color: (--color-black);
+
+  & strong {
+    font-weight: 500;
+  }
+}

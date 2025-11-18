@@ -43,6 +43,15 @@ $size = $size_terms ? $size_terms[0] : '';
             <?php if ($images): ?>
                 <div class="product-gallery__thumbs swiper product-thumbs-swiper">
                     <div class="swiper-wrapper">
+
+                        <!-- Сначала миниатюра главной картинки -->
+                        <div class="swiper-slide">
+                            <div class="thumb-box">
+                                <?php echo wp_get_attachment_image( $product->get_image_id(), 'thumbnail' ); ?>
+                            </div>
+                        </div>
+
+                        <!-- Затем миниатюры из галереи -->
                         <?php foreach ($images as $img_id): ?>
                             <div class="swiper-slide">
                                 <div class="thumb-box">
@@ -50,13 +59,18 @@ $size = $size_terms ? $size_terms[0] : '';
                                 </div>
                             </div>
                         <?php endforeach; ?>
+
                     </div>
 
-                    <div class="thumbs-swiper-button-prev"><img src="<?php echo get_template_directory_uri();?>/assets/icons/product-arrow-left.svg" alt=""></div>
-                    <div class="thumbs-swiper-button-next"><img src="<?php echo get_template_directory_uri();?>/assets/icons/product-arrow-right.svg" alt=""></div>
+                    <div class="thumbs-swiper-button-prev">
+                        <img src="<?php echo get_template_directory_uri();?>/assets/icons/product-arrow-left.svg" alt="">
+                    </div>
+                    <div class="thumbs-swiper-button-next">
+                        <img src="<?php echo get_template_directory_uri();?>/assets/icons/product-arrow-right.svg" alt="">
+                    </div>
                 </div>
-
             <?php endif; ?>
+
         </div>
 
 
@@ -73,17 +87,33 @@ $size = $size_terms ? $size_terms[0] : '';
 
                     <h1 class="product-info__title"><?php the_title(); ?></h1>
 
+                    <?php
+                        $default_price_html = $product->get_price_html();
+                    ?>
+
                     <div class="product-info__price">
-                        <?php echo $product->get_price_html(); ?>
+                        <span class="dynamic-price"
+                              data-default-price="<?php echo esc_attr($default_price_html); ?>">
+                            <?php echo $default_price_html; ?>
+                        </span>
                     </div>
 
                 </div>
 
-                <div class="parameters">
-                    <div class="parameters__item">
-                        <span>Цена указана за 2 шт.</span>
+                <?php
+                $enabled = get_post_meta($product->get_id(), '_snov_parameters_enabled', true);
+                $items   = get_post_meta($product->get_id(), '_snov_parameters_items', true);
+
+                if ($enabled && is_array($items) && !empty($items)) :
+                    ?>
+                    <div class="parameters">
+                        <?php foreach ($items as $item): ?>
+                            <div class="parameters__item">
+                                <span><?php echo esc_html($item); ?></span>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
-                </div>
+                <?php endif; ?>
 
             </div>
 
@@ -115,7 +145,8 @@ $size = $size_terms ? $size_terms[0] : '';
                             $color_product = wc_get_product($id);
                             if (!$color_product) continue;
 
-                            $color_name = $color_product->get_name();
+                            $color_custom_name = get_post_meta($id, '_snov_color_name', true);
+                            $color_name = $color_custom_name ? $color_custom_name : $color_product->get_name();
                             $color_hex  = get_post_meta($id, '_snov_color_hex', true);
 
                             if (!$color_hex) {

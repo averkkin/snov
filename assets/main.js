@@ -7,9 +7,8 @@ import productSizeSelect from "./components/Variations/variations.js";
 document.addEventListener('DOMContentLoaded', () => {
 
     sliderProducts();
-    productGallery();
     productAccordion();
-    // variationsController()
     productSizeSelect();
+    productGallery();
 
 });

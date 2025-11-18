@@ -143,7 +143,7 @@ function render_category_slider($title, $slug) {
         <img src="<?php echo get_template_directory_uri();?>/assets/images/img4.jpg" alt="Подушки" width="1512" height="800">
     </section>
 
-<!--    --><?php //render_category_slider('Подушки', 'podushka');?>
+    <?php render_category_slider('Подушки', 'podushka');?>
 
     <!--Одеяла-->
     <section class="image-block">
