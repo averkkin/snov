@@ -25,6 +25,13 @@
 @use '../components/ProductCard/product-card.scss';
 @use '../components/SingleProduct/single-product.scss';
 @use '../components/ProductAccordion/product-accordion.scss';
+@use '../components/WoocommerceBreadcrumb/woocommerce-breadcrumb.scss';
+@use '../components/Variations/variations.scss';
+@use '../components/ProductColorList/product-color-list.scss';
+@use '../components/DeliveryTable/delivery-table.scss';
+@use '../components/ProductSizeSelect/product-size-select.scss';
+@use '../components/Parameters/parameters.scss';
+@use '../components/ProductGallery/product-gallery.scss';
 
 // blocks
 @use '../blocks/Hero/hero.scss';

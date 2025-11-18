@@ -1,0 +1,58 @@
+@use '../../styles/helpers' as *;
+
+.delivery-table-wrapper {
+  border: 1px solid #CCCCCC;
+  border-radius: var(--border-radius-s);
+  overflow: hidden;
+  width: fit-content;
+}
+
+.delivery-table {
+  width: 100%;
+  border-collapse: separate;
+  background-color: var(--color-white);
+  border-spacing: 0;
+  overflow: hidden;
+}
+
+.delivery-table th,
+.delivery-table td {
+  padding: rem(16) rem(20);
+  border-bottom: 1px solid #CCCCCC;
+  border-right: 1px solid #CCCCCC;
+  width: 33.3%;
+
+  @include tablet {
+    padding: rem(16) rem(12);
+  }
+}
+
+.delivery-table th {
+  @include fluid-text(14, 12);
+
+  text-align: left;
+  font-weight: 500;
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.delivery-table td {
+  @include fluid-text(14, 10);
+  text-align: left;
+  font-weight: 400;
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.delivery-table tr:last-child td {
+  border-bottom: none;
+}
+
+.delivery-table tr:last-child td {
+  border-bottom: none;
+}
+

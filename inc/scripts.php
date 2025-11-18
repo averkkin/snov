@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 function theme_enqueue_assets() {
 
     wp_enqueue_script(

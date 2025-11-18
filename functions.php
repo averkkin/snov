@@ -30,8 +30,14 @@ function snov_group_scripts() {
 }
 add_action('wp_enqueue_scripts', 'snov_group_scripts');
 
-// include WooCommerce
-require_once get_template_directory() . '/inc/woocommerce.php';
+// Include dir 'inc'
+$iterator = new RecursiveIteratorIterator(
+    new RecursiveDirectoryIterator(get_template_directory() . '/inc/')
+);
 
-// include custom scripts
-require_once get_template_directory() . '/inc/scripts.php';
+foreach ($iterator as $file) {
+    if ($file->isFile() && $file->getExtension() === 'php') {
+        require_once $file->getPathname();
+    }
+}
+

@@ -1,76 +1,102 @@
 @use '../../styles/helpers' as *;
+@use '../Button/button.scss';
 
 .product-page {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: rem(40);
-}
+  display: flex;
+  flex-direction: column;
+  gap: fluid(60, 32);
+  background-color: var(--color-black-05);
+  padding-block: fluid(38, 24) fluid(80, 50);
 
-.product-gallery {
-  width: 100%;
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: rem(40);
 
-  &__main {
-    width: inherit;
-    height: fluid(551, 288);
-    overflow: hidden;
-    border-radius: var(--border-radius-m);
-    position: relative;
-
-    @include mobile {
-      border-radius: var(--border-radius-s);
-    }
-
-    img {
-      @include abs-center;
-      width: inherit;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-    }
-  }
-
-  &__thumbs {
-    margin-top: 20px;
-    width: 100%;
-
-    .swiper-slide {
-      overflow: hidden;
-      cursor: pointer;
-      border-radius: var(--border-radius-m);
-
-      img { width: 100%; }
-      @include mobile {
-        border-radius: var(--border-radius-s);
-      }
+    @include tablet {
+      display: flex;
+      flex-direction: column;
     }
   }
 }
 
 .product-info {
-
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  gap: rem(40);
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: rem(8);
+    font-weight: 600;
+    position: relative;
+
+    @include mobile {
+      gap: rem(20);
+    }
+
+
+
+    &--inner {
+      display: flex;
+      flex-direction: column;
+      gap: rem(1);
+
+      @include mobile {
+        gap: rem(8);
+      }
+    }
+  }
 
   &__category {
-    font-size: 14px;
-    color: #777;
-    margin-bottom: 12px;
+    @include fluid-text(14, 12);
   }
 
   &__title {
-    font-size: 40px;
-    font-weight: 700;
-    margin-bottom: 8px;
+    @include fluid-text(40, 20);
+    font-weight: 600;
+    text-transform: uppercase;
   }
 
   &__price {
-    font-size: 26px;
+    @include fluid-text(40, 20);
     font-weight: 600;
-    margin-bottom: 20px;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: rem(16);
+  }
+
+  &__desc {
+    @include fluid-text(16, 15);
+    display: flex;
+    flex-direction: column;
+    gap: rem(16);
+
+    & strong {
+      font-weight: 500 !important;
+    }
+  }
+
+  &__colors {
+    @include fluid-text(16, 15);
+
+    display: flex;
+    flex-direction: column;
+    gap: fluid(16, 8);
+    width: 100%;
+
+    font-weight: 600;
   }
 
   &__short {
-    font-size: 15px;
-    margin-bottom: 20px;
+    @include fluid-text(16, 15);
+    max-width: rem(440);
+    font-weight: 500;
   }
 
   &__row {
@@ -82,17 +108,16 @@
   }
 
   &__cart {
-    margin-top: 30px;
 
     button {
       width: 100%;
-      height: 50px;
-      background: #EE74A8;
-      border-radius: 8px;
-      color: #fff;
-      font-size: 16px;
-      font-weight: 600;
+
+      @extend .btn;
     }
   }
+}
+
+.quantity {
+  display: none !important;
 }
 

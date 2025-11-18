@@ -1,0 +1,25 @@
+@use '../../styles/helpers' as *;
+
+.parameters {
+  display: flex;
+  flex-direction: column;
+  gap: fluid(8, 4);
+  width: 100%;
+  max-width: fluid(196, 149);
+  background-color: var(--color-white);
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  &__item {
+    @include fluid-text(14, 10);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: fluid(35, 30);
+    font-weight: 500;
+  }
+}

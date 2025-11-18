@@ -1,0 +1,21 @@
+@use '../../styles/helpers' as *;
+
+.woocommerce-breadcrumb {
+  @include fluid-text(14, 12);
+
+  display: flex;
+  gap: fluid(7, 4);
+  color: var(--color-black);
+
+  & a {
+    font-weight: 400;
+  }
+
+  & .crumb-item:last-child {
+    font-weight: 700;
+  }
+
+
+}
+
+

@@ -13,6 +13,8 @@
   }
 
   &__header {
+    @include fluid-text(20, 16);
+
     width: 100%;
     padding: 18px 0;
     display: flex;
@@ -20,9 +22,9 @@
     justify-content: space-between;
     background: transparent;
     border: 0;
-    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
+    text-transform: uppercase;
   }
 
   &__icon {
@@ -51,12 +53,21 @@
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.25s ease;
-    padding-right: 40px;
 
     p {
-      font-size: 14px;
-      line-height: 1.6;
+      @include fluid-text(16, 15);
+      font-weight: 400;
       margin-bottom: 10px;
+
+      & strong {
+        font-weight: 600;
+      }
+    }
+
+    & h4 {
+      @include fluid-text(20, 15);
+      font-weight: 500 !important;
+      margin-bottom: fluid(16, 12);
     }
   }
 

@@ -1,4 +1,7 @@
 <?php
+
+defined('ABSPATH') || exit;
+
 /**
  * Woocommerce functions
  */
@@ -16,48 +19,62 @@ remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
 // Disabling WooCommerce styles
 add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 
-
-/**
- * Добавляем поля Состав и Материал в раздел "Характеристики"
- */
-add_action( 'woocommerce_product_data_tabs', function( $tabs ) {
-    $tabs['snov_characteristics'] = [
-        'label'    => __( 'Характеристики', 'snov' ),
-        'target'   => 'snov_characteristics_tab',
-        'class'    => [],
-        'priority' => 30,
+// Добавляем новую вкладку в свойства товара
+add_filter('woocommerce_product_data_tabs', function($tabs) {
+    $tabs['snov_colors'] = [
+        'label'    => 'Цветовые варианты',
+        'target'   => 'snov_colors_tab',
+        'class'    => ['hide_if_grouped'],
+        'priority' => 25,
     ];
     return $tabs;
-} );
+});
 
-add_action( 'woocommerce_product_data_panels', function() {
+add_action('woocommerce_product_data_panels', function() {
     global $post;
+    ?>
+    <div id="snov_colors_tab" class="panel woocommerce_options_panel">
+        <div class="options_group">
 
-    $sostav   = get_post_meta( $post->ID, '_snov_sostav', true );
-    $material = get_post_meta( $post->ID, '_snov_material', true );
+            <?php
+            // Поле ID связанных цветов
+            woocommerce_wp_text_input([
+                'id'          => '_snov_color_links',
+                'label'       => 'Связанные цвета (ID товаров через запятую)',
+                'placeholder' => '58, 62, 64, 66',
+                'desc_tip'    => true,
+                'description' => 'Укажите ID других товаров, которые являются цветами этой модели.',
+                'value'       => get_post_meta($post->ID, '_snov_color_links', true),
+            ]);
 
-    echo '<div id="snov_characteristics_tab" class="panel woocommerce_options_panel">';
+            // Поле HEX цвета
+            woocommerce_wp_text_input([
+                'id'          => '_snov_color_hex',
+                'label'       => 'HEX цвет кружка',
+                'placeholder' => '#ece7df',
+                'desc_tip'    => true,
+                'description' => 'Укажите HEX цвет (например: #ece7df)',
+                'value'       => get_post_meta($post->ID, '_snov_color_hex', true),
+            ]);
+            ?>
 
-    woocommerce_wp_text_input([
-        'id'          => '_snov_sostav',
-        'label'       => 'Состав',
-        'value'       => $sostav ?: '',
-    ]);
-
-    woocommerce_wp_text_input([
-        'id'          => '_snov_material',
-        'label'       => 'Материал',
-        'value'       => $material ?: '',
-    ]);
-
-    echo '</div>';
+        </div>
+    </div>
+    <?php
 });
 
-add_action( 'woocommerce_admin_process_product_object', function( $product ) {
-    if ( isset($_POST['_snov_sostav']) ) {
-        $product->update_meta_data('_snov_sostav', sanitize_text_field($_POST['_snov_sostav']));
+add_action('woocommerce_admin_process_product_object', function($product) {
+
+    if (isset($_POST['_snov_color_links'])) {
+        $product->update_meta_data('_snov_color_links', sanitize_text_field($_POST['_snov_color_links']));
     }
-    if ( isset($_POST['_snov_material']) ) {
-        $product->update_meta_data('_snov_material', sanitize_text_field($_POST['_snov_material']));
+
+    if (isset($_POST['_snov_color_hex'])) {
+        $product->update_meta_data('_snov_color_hex', sanitize_hex_color($_POST['_snov_color_hex']));
     }
 });
+
+
+
+
+

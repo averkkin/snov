@@ -1,0 +1,92 @@
+@use '../../styles/helpers' as *;
+
+.variations_form select {
+  display: none !important;
+}
+
+.variations_form .variations,
+.variations_form .reset_variations {
+  display: none !important;
+}
+
+
+.product-size-select {
+  position: relative;
+  width: 200px;
+  font-size: 18px;
+
+  &__trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    gap: 8px;
+
+    .label {
+      @include fluid-text(16, 15);
+
+      font-weight: 600;
+    }
+
+    .value {
+      @include fluid-text(16, 15);
+      font-weight: 500;
+    }
+
+    .arrow {
+      width: fluid(12, 8);
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-left: rem(6);
+      transition: transform 0.2s ease;
+    }
+  }
+
+  &.is-open .arrow {
+    transform: rotate(180deg);
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border-radius: var(--border-radius-m);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    padding: 12px 0;
+    display: none;
+    z-index: 20;
+    @include mobile {
+      border-radius: var(--border-radius-s);
+    }
+
+    .product-size-option {
+      @include fluid-text(16 ,15);
+
+      width: 100%;
+      padding: 9px 18px;
+      background: transparent;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+
+      &:hover {
+        background: #f6f6f6;
+      }
+
+      &.active {
+        font-weight: 500;
+        background: #f2f2f2;
+      }
+    }
+  }
+
+  &.is-open &__dropdown {
+    display: block;
+  }
+}
