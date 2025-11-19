@@ -1,0 +1,12 @@
+@use '../../styles/helpers' as *;
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: fluid(40, 32);
+  column-gap: fluid(20, 10);
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+}

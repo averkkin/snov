@@ -23,17 +23,17 @@
     overflow: hidden;
     border-radius: var(--border-radius-m);
 
-    .swiper-wrapper {
+    & .swiper-wrapper {
       display: flex;
     }
 
-    .swiper-slide {
+    & .swiper-slide {
       width: calc((100% - 24px) / 3) !important; // Жёсткая ширина → всегда 3 миниатюры
       border-radius: var(--border-radius-m);
       overflow: hidden;
       cursor: pointer;
 
-      img {
+      & img {
         width: 100%;
         height: auto;
         display: block;

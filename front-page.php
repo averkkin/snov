@@ -14,51 +14,57 @@
 
 get_header();
 
-
-// Render slider of category
-function render_category_slider($title, $slug) {
+function render_category_slider( $title, $slug ) {
     $args = [
-        'post_type'      => 'product',
-        'posts_per_page' => -1,
-        'tax_query'      => [
-            [
-                'taxonomy' => 'product_cat',
-                'field'    => 'slug',
-                'terms'    => $slug,
-            ]
-        ]
+            'post_type'      => 'product',
+            'posts_per_page' => -1,
+            'tax_query'      => [
+                    [
+                            'taxonomy' => 'product_cat',
+                            'field'    => 'slug',
+                            'terms'    => $slug,
+                    ],
+            ],
     ];
 
-    $loop = new WP_Query($args);
+    $loop = new WP_Query( $args );
 
-    if ($loop->have_posts()) :
-        ?>
+    if ( $loop->have_posts() ) : ?>
         <section class="products-slider container">
             <div class="swiper products-swiper">
                 <div class="swiper-wrapper">
-                    <?php while ($loop->have_posts()) : $loop->the_post();
-                        global $product;
+                    <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+                        <?php
+                        $product = wc_get_product( get_the_ID() );
+                        if ( ! $product ) {
+                            continue;
+                        }
+
+                        $regular_price = (float) $product->get_regular_price();
+                        $sale_price    = (float) $product->get_sale_price();
+                        $on_sale       = $product->is_on_sale() && $regular_price > 0 && $sale_price > 0 && $sale_price < $regular_price;
+
+                        if ( $on_sale ) {
+                            $discount = round( ( ( $regular_price - $sale_price ) / $regular_price ) * 100 );
+                        }
                         ?>
                         <div class="swiper-slide">
                             <div class="product-card">
 
                                 <a href="<?php the_permalink(); ?>" class="product-card__image">
-                                    <?php if ($product->is_on_sale()) : ?>
-                                        <span class="product-card__sale-badge">
-                                            -<?php echo round( ( ($product->get_regular_price() - $product->get_sale_price()) / $product->get_regular_price() ) * 100 ); ?>%
-                                        </span>
-                                    <?php endif; ?>
-
-                                    <?php echo woocommerce_get_product_thumbnail('large'); ?>
+                                    <?php echo $product->get_image( 'large' ); ?>
                                 </a>
 
                                 <div class="product-card__meta">
+
                                     <span class="product-card__category">
-                                        <?php echo wc_get_product_category_list(get_the_ID()); ?>
                                         <?php
-                                        $color = wc_get_product_terms(get_the_ID(), 'pa_color');
-                                        if (!empty($color)) : echo esc_html($color[0]->name);
-                                        endif;
+                                        echo wc_get_product_category_list( get_the_ID() );
+
+                                        $color_terms = wc_get_product_terms( get_the_ID(), 'pa_color' );
+                                        if ( ! empty( $color_terms ) && ! is_wp_error( $color_terms ) ) {
+                                            echo ' · ' . esc_html( $color_terms[0]->name );
+                                        }
                                         ?>
                                     </span>
 
@@ -66,15 +72,23 @@ function render_category_slider($title, $slug) {
                                         <a href="<?php the_permalink(); ?>" class="product-card__title">
                                             <?php the_title(); ?>
                                         </a>
+
                                         <div class="product-card__price">
-                                            <?php if ($product->is_on_sale()) : ?>
-                                                <span class="price-new"><?php echo wc_price($product->get_sale_price()); ?></span>
-                                                <span class="price-old"><?php echo wc_price($product->get_regular_price()); ?></span>
+                                            <?php if ( $on_sale ) : ?>
+                                                <span class="price-new">
+                                                    <?php echo wc_price( $sale_price ); ?>
+                                                </span>
+                                                <span class="price-old">
+                                                    <?php echo wc_price( $regular_price ); ?>
+                                                </span>
                                             <?php else : ?>
-                                                <span class="price-new"><?php echo wc_price($product->get_regular_price()); ?></span>
+                                                <span class="price-new">
+                                                    <?php echo $product->get_price_html(); ?>
+                                                </span>
                                             <?php endif; ?>
                                         </div>
                                     </div>
+
                                 </div>
 
                             </div>
@@ -82,17 +96,14 @@ function render_category_slider($title, $slug) {
                     <?php endwhile; ?>
                 </div>
 
-                <!-- Стрелки -->
                 <div class="slider-arrow slider-arrow--prev">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/arrow-left.svg" alt="Назад">
+                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/icons/arrow-left.svg' ); ?>" alt="Назад">
                 </div>
 
                 <div class="slider-arrow slider-arrow--next">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/arrow-right.svg" alt="Вперед">
+                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/icons/arrow-right.svg' ); ?>" alt="Вперёд">
                 </div>
-
             </div>
-
         </section>
     <?php
     endif;

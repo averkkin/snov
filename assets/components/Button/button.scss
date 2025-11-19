@@ -1,7 +1,5 @@
 @use '../../styles/helpers' as *;
 
-
-
 %btn {
   @include flex-center(true);
 
@@ -13,12 +11,18 @@
   font-size: rem(16);
   font-weight: 700;
   border-radius: var(--border-radius-l);
+  height: rem(48);
+  white-space: nowrap;
 
   @include hover {
     color: var(--color-pink);
     border-color: var(--color-pink);
     background-color: var(--color-white);
   }
+}
+
+.btn {
+  @extend %btn;
 
   &--white{
     color: var(--color-pink);
@@ -29,8 +33,4 @@
       background-color: var(--color-pink);
     }
   }
-}
-
-.btn {
-  @extend %btn;
 }

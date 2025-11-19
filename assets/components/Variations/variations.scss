@@ -11,40 +11,30 @@
 
 
 .product-size-select {
+  display: flex;
+  gap: rem(8);
   position: relative;
-  width: 200px;
-  font-size: 18px;
 
-  &__trigger {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    gap: 8px;
 
-    .label {
+  &__trigger { width: 100%; display: flex; align-items: center; justify-content: flex-start; background: transparent; border: none; cursor: pointer; padding: 0; .label { @include fluid-text(16, 15); font-weight: 600; } .value { @include fluid-text(16, 15); font-weight: 500; } .arrow { width: fluid(12, 8); background-size: contain; background-repeat: no-repeat; margin-left: rem(6); transition: transform 0.2s ease; } }
+
+    & label {
       @include fluid-text(16, 15);
-
       font-weight: 600;
     }
-
-    .value {
-      @include fluid-text(16, 15);
-      font-weight: 500;
-    }
-
-    .arrow {
-      width: fluid(12, 8);
-      background-size: contain;
-      background-repeat: no-repeat;
-      margin-left: rem(6);
-      transition: transform 0.2s ease;
-    }
-  }
+    //
+    //.value {
+    //  @include fluid-text(16, 15);
+    //  font-weight: 500;
+    //}
+    //
+    //.arrow {
+    //  width: fluid(12, 8);
+    //  background-size: contain;
+    //  background-repeat: no-repeat;
+    //  margin-left: rem(6);
+    //  transition: transform 0.2s ease;
+    //}
 
   &.is-open .arrow {
     transform: rotate(180deg);
@@ -54,13 +44,14 @@
     position: absolute;
     top: calc(100% + 10px);
     left: 0;
-    width: 100%;
     background: #fff;
     border-radius: var(--border-radius-m);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
     padding: 12px 0;
     display: none;
     z-index: 20;
+    width: fit-content;
+
     @include mobile {
       border-radius: var(--border-radius-s);
     }
@@ -96,10 +87,35 @@
 }
 
 .dynamic-price {
-  visibility: hidden;
-}
-.dynamic-price.ready {
-  visibility: visible;
+  display: flex;
+  gap: fluid(16, 5);
+  align-items: flex-end;
+  font-weight: 500;
+
+  & ins {
+    @include fluid-text(40, 20);
+    text-decoration-line: none;
+    order: 1;
+    font-weight: 600;
+  }
+
+  & del {
+    @include fluid-text(32, 14);
+    opacity: 0.5;
+    order: 2;
+  }
+
+  & .price-discount {
+    @include fluid-text(16, 10);
+
+    order: 3;
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--color-pink);
+    padding-block: rem(6);
+    padding-inline: rem(8);
+    color: var(--color-white);
+  }
 }
 
 .woocommerce-variation-description {

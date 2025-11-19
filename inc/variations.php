@@ -1,29 +1,6 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-//function snov_get_product_sizes( $product ) {
-//
-//    if ( ! $product->is_type('variable') ) {
-//        return [];
-//    }
-//
-//    $variations = $product->get_available_variations();
-//    $sizes = [];
-//
-//    foreach ( $variations as $variation ) {
-//        $attr = $variation['attributes'];
-//
-//        // pa_size или другой slug — Woo сам подставит
-//        foreach ( $attr as $key => $value ) {
-//            if (strpos($key, 'attribute_pa_') !== false) {
-//                $sizes[] = $value;
-//            }
-//        }
-//    }
-//
-//    return array_unique($sizes);
-//}
-
 function snov_get_product_sizes( $product ) {
 
     if ( ! $product->is_type('variable') ) {

@@ -88,15 +88,57 @@ $size = $size_terms ? $size_terms[0] : '';
                     <h1 class="product-info__title"><?php the_title(); ?></h1>
 
                     <?php
-                        $default_price_html = $product->get_price_html();
+                    // Получаем цены вручную
+                    if ($product->is_type('variable')) {
+
+                        // Минимальные цены вариаций
+                        $prices = $product->get_variation_prices(true);
+
+                        $min_regular = !empty($prices['regular_price']) ? min($prices['regular_price']) : 0;
+                        $min_sale    = !empty($prices['sale_price']) ? min(array_filter($prices['sale_price'])) : 0;
+
+                        if ($min_sale && $min_sale < $min_regular) {
+                            // Есть скидка
+                            $percent = round((($min_regular - $min_sale) / $min_regular) * 100);
+
+                            $default_price_html =
+                                    '<ins>' . wc_price($min_sale) . '</ins> ' .
+                                    '<del>' . wc_price($min_regular) . '</del> ' .
+                                    '<span class="price-discount">-' . $percent . '%</span>';
+
+                        } else {
+                            // Без скидки
+                            $default_price_html = '<ins>' . wc_price($min_regular) . '</ins>';
+                        }
+
+                    } else {
+
+                        // Простой товар
+                        $regular = (float)$product->get_regular_price();
+                        $sale    = (float)$product->get_sale_price();
+
+                        if ($sale && $sale < $regular) {
+                            $percent = round((($regular - $sale) / $regular) * 100);
+
+                            $default_price_html =
+                                    '<ins>' . wc_price($sale) . '</ins> ' .
+                                    '<del>' . wc_price($regular) . '</del> ' .
+                                    '<span class="price-discount">-' . $percent . '%</span>';
+
+                        } else {
+                            $default_price_html = '<ins>' . wc_price($regular) . '</ins>';
+                        }
+                    }
+
                     ?>
 
                     <div class="product-info__price">
                         <span class="dynamic-price"
-                              data-default-price="<?php echo esc_attr($default_price_html); ?>">
-                            <?php echo $default_price_html; ?>
+                              data-default-price="<?php echo esc_attr( $product->get_price_html() ); ?>">
+                            <?php echo $product->get_price_html(); ?>
                         </span>
                     </div>
+
 
                 </div>
 
@@ -124,8 +166,8 @@ $size = $size_terms ? $size_terms[0] : '';
                     </div>
                 <?php endif; ?>
 
-                <!-- Размер -->
-                <?php snov_render_sizes_block(); ?>
+                <!--Атрибуты-->
+                <?php snov_render_wc_variation_selects(); ?>
 
                 <!-- Цвет (ссылки на другие товары) -->
                 <div class="product-info__colors">
@@ -175,6 +217,7 @@ $size = $size_terms ? $size_terms[0] : '';
             </div>
 
             <div class="product-info__footer">
+
                 <!-- Кнопка "в корзину" -->
                 <div class="product-info__cart">
                     <?php woocommerce_template_single_add_to_cart(); ?>

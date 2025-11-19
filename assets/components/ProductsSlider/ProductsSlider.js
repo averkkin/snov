@@ -15,7 +15,7 @@ export default function sliderProducts() {
                 prevEl: slider.querySelector('.slider-arrow--prev'),
             },
             breakpoints: {
-                0:   { slidesPerView: 1, spaceBetween: 20 },
+                0:   { slidesPerView: 2, spaceBetween: 10 },
                 768: { slidesPerView: 2, spaceBetween: 25 },
                 1200:{ slidesPerView: 3, spaceBetween: 40 }
             }
