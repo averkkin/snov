@@ -1,4 +1,7 @@
 <?php
+
+// Добавление кастомных полей для конструктора комплекта
+
 if (empty($args['bedding']) || empty($args['bedding']['components'])) {
     return;
 }
