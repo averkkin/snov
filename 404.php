@@ -10,51 +10,36 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+    <main class="content">
 
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'snov-group' ); ?></h1>
-			</header><!-- .page-header -->
+        <section class="custom-error-404">
+            <div class="custom-error-404__wrapper">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/404.png" alt="Error" width="594"
+                     height="273">
+                <h1 class="custom-error-404__title">Ошибка</h1>
+            </div>
+            <p class="custom-error-404__text">Извините, кажется произошла ошибка. Этой страницы не&nbsp;существует.
+                Пожалуйста,
+                <a href="/" class="link link--pink link--medium">перейдите на&nbsp;главную</a>
+                <?php
+                    if (wp_get_referer()) {
+                        echo 'или&nbsp;вернитесь <a href="' . esc_url( wp_get_referer() ) . '" class="link link--pink link--medium">назад.</a>';
+                    }
+                ?>
+                </p>
+        </section><!-- .error-404 -->
 
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'snov-group' ); ?></p>
+        <section class="slider-large">
 
-					<?php
-					get_search_form();
+            <div class="section-title container">
+                <h2 class="h2 section-title__h2">Вам может понравиться</h2>
+            </div>
 
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
+            <?php render_category_slider('', 'hits-sales'); ?>
 
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'snov-group' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
+        </section>
 
-					<?php
-					/* translators: %1$s: smiley */
-					$snov_group_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'snov-group' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$snov_group_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
-	</main><!-- #main -->
+    </main><!-- #main -->
 
 <?php
 get_footer();

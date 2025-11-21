@@ -32,15 +32,15 @@
             <div class="footer__menu">
                 <nav>
                     <ul>
-                        <li><a href="">Каталог</a></li>
-                        <li><a href="">О нас</a></li>
-                        <li><a href="">Контакты</a></li>
-                        <li><a href="">B2B</a></li>
+                        <li><a href="/shop">Каталог</a></li>
+                        <li><a href="/about">О нас</a></li>
+                        <li><a href="/contact">Контакты</a></li>
+                        <li><a href="/b2b">B2B</a></li>
                     </ul>
                 </nav>
                 <nav>
                     <ul>
-                        <li><a href="">Сертификат</a></li>
+                        <li><a href="/gift-certificate">Сертификат</a></li>
                         <li><a href="">Личный кабинет</a></li>
                         <li class="hidden-mobile"><button type="button" class="footer__cart">Корзина (<span>0</span>)</button></li>
                     </ul>
@@ -72,8 +72,8 @@
         </div>
 
         <div class="footer__privacy">
-            <a href="" class="link link--blue">Пользовательское соглашение</a>
-            <a href="" class="link link--blue">Политика в отношении обработки персональных данных</a>
+            <a href="/privacy" class="link link--blue">Пользовательское соглашение</a>
+            <a href="/policy" class="link link--blue">Политика в отношении обработки персональных данных</a>
         </div>
 
     </div>

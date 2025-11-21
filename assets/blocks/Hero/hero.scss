@@ -3,23 +3,70 @@
 .hero {
   display: flex;
   width: 100%;
+  height: fluid(717, 570);
+
+  @include mobile-s {
+    height: rem(570);
+  }
 
   &__images {
     display: flex;
     width: 100%;
+    height: inherit;
+
     img {
       flex: 1;
-      pointer-events: none;
+      object-fit: cover;
+      object-position: center;
+
+      @include mobile-s-above {
+        width: 33.3%;
+        height: 100%;
+      }
+
+      @include mobile-s{
+        height: 100%;
+      }
     }
   }
 
   &__btn {
     @include abs-x;
     bottom: rem(80);
+    z-index: 99;
+
+    @include laptop {
+      bottom: rem(100);
+    }
+
+    @include tablet {
+      bottom: rem(200);
+    }
 
     @include mobile-s {
       @include abs-center;
     }
   }
 
+}
+
+.hero-desktop {
+  @include mobile-s {
+    display: none;
+  }
+}
+
+.js-hero-slider {
+  display: none;
+
+  @include mobile-s{
+    display: block;
+  }
+}
+
+.swiper-pagination-hero {
+  position: absolute;
+  bottom: rem(40) !important;
+  left: 50% !important;
+  transform: translateX(-50%);
 }

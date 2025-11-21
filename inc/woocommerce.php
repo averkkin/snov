@@ -13,9 +13,6 @@ add_action( 'after_setup_theme', function () {
     add_theme_support('title-tag');
 } );
 
-// Remove breadcrumb
-remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
-
 // Disabling WooCommerce styles
 add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 

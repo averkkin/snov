@@ -20,8 +20,19 @@ defined( 'ABSPATH' ) || exit;
 get_header( 'shop' );
 
 ?>
+<main class="content">
 
-<div class="container">
+
+<section class="image-block catalog-hero">
+    <h1 class="h2 h2--white h2--large container image-block__h2">
+        Каталог
+    </h1>
+    <img src="<?php echo get_template_directory_uri();?>/assets/images/shop.jpg" class="hidden-mobile" alt="Подушки" width="1512" height="800">
+    <img src="<?php echo get_template_directory_uri();?>/assets/images/shop-mobile.jpg" class="visible-mobile" alt="Подушки" width="428" height="570">
+
+</section>
+
+<div class="catalog container">
 
 <?php
 
@@ -43,49 +54,137 @@ do_action( 'woocommerce_before_main_content' );
  */
 do_action( 'woocommerce_shop_loop_header' );
 
-if ( woocommerce_product_loop() ) {
+?>
 
-    /**
-     * Hook: woocommerce_before_shop_loop.
-     *
-     * @hooked woocommerce_output_all_notices - 10
-     * @hooked woocommerce_result_count - 20
-     * @hooked woocommerce_catalog_ordering - 30
-     */
-    do_action( 'woocommerce_before_shop_loop' );
+<div class="catalog__header">
+    <h2 class="h2 catalog__h2">Все товары</h2>
+    <nav>
+        <ul>
+            <li><a href="#podushka">Подушки</a></li>
+            <li><a href="#odeyalo">Одеяла</a></li>
+            <li><a href="#complect">Комплекты</a></li>
+            <li><a href="#navolochka">Наволочки</a></li>
+            <li><a href="#pododeyalnik">Пододеяльники</a></li>
+            <li><a href="#prostin">Простыни</a></li>
+        </ul>
+    </nav>
+</div>
 
-    woocommerce_product_loop_start();
+    <section class="catalog__category" id="podushka">
 
-    if ( wc_get_loop_prop( 'total' ) ) {
-        while ( have_posts() ) {
-            the_post();
+        <div class="catalog__category-head">
+            <h3 class="h3 catalog__h3">Подушки</h3>
+            <div class="catalog__type-product">
+                <div class="catalog__type-item" data-tab="soft">
+                    <span class="dot"></span>
+                    <span class="type">Софт</span>
+                </div>
+                <div class="catalog__type-item" data-tab="balance">
+                    <span class="dot"></span>
+                    <span class="type">Баланс</span>
+                </div>
+                <div class="catalog__type-item" data-tab="balance-plus">
+                    <span class="dot"></span>
+                    <span class="type">Баланс Плюс</span>
+                </div>
+                <div class="catalog__type-item" data-tab="base">
+                    <span class="dot"></span>
+                    <span class="type">Бейсик</span>
+                </div>
+            </div>
+        </div>
+        <div class="catalog__loop" data-category="soft">
+            <?php render_wc_category_products('soft'); ?>
+        </div>
+        <div class="catalog__loop" data-category="balance">
+            <?php render_wc_category_products('balance'); ?>
+        </div>
+        <div class="catalog__loop" data-category="balance-plus">
+            <?php render_wc_category_products('balance-plus'); ?>
+        </div>
+        <div class="catalog__loop" data-category="base">
+            <?php render_wc_category_products('base'); ?>
+        </div>
 
-            /**
-             * Hook: woocommerce_shop_loop.
-             */
-            do_action( 'woocommerce_shop_loop' );
+    </section>
 
-            wc_get_template_part( 'content', 'product' );
-        }
-    }
+    <section class="catalog__category" id="odeyalo">
 
-    woocommerce_product_loop_end();
+        <div class="catalog__category-head">
+            <h3 class="h3 catalog__h3">Одеяла</h3>
+            <div class="catalog__type-product">
+                <div class="catalog__type-item" data-tab="for-one">
+                    <span class="dot"></span>
+                    <span class="type">Для одного</span>
+                </div>
+                <div class="catalog__type-item" data-tab="for-two">
+                    <span class="dot"></span>
+                    <span class="type">Для двоих</span>
+                </div>
+                <div class="catalog__type-item" data-tab="down-jacket">
+                    <span class="dot"></span>
+                    <span class="type">Пуховик</span>
+                </div>
+                <div class="catalog__type-item" data-tab="down-jacket-mini">
+                    <span class="dot"></span>
+                    <span class="type">Пуховик мини</span>
+                </div>
+            </div>
+        </div>
 
-    /**
-     * Hook: woocommerce_after_shop_loop.
-     *
-     * @hooked woocommerce_pagination - 10
-     */
-    do_action( 'woocommerce_after_shop_loop' );
-} else {
-    /**
-     * Hook: woocommerce_no_products_found.
-     *
-     * @hooked wc_no_products_found - 10
-     */
-    do_action( 'woocommerce_no_products_found' );
-}
+        <div class="catalog__loop" data-category="for-one">
+            <?php render_wc_category_products('for-one'); ?>
+        </div>
+        <div class="catalog__loop" data-category="for-two">
+            <?php render_wc_category_products('for-two'); ?>
+        </div>
+        <div class="catalog__loop" data-category="down-jacket">
+            <?php render_wc_category_products('down-jacket'); ?>
+        </div>
+        <div class="catalog__loop" data-category="down-jacket-mini">
+            <?php render_wc_category_products('down-jacket-mini'); ?>
+        </div>
+    </section>
 
+<!--    <section class="catalog__category">-->
+<!--        <div class="catalog__category-head">-->
+<!--            <h3 class="h3 catalog__h3">Комплекты</h3>-->
+<!--            <div class="catalog__type-product">-->
+<!--                <div class="catalog__type-item">-->
+<!--                    <span class="dot"></span>-->
+<!--                    <span class="type">Однотонные</span>-->
+<!--                </div>-->
+<!--                <div class="catalog__type-item">-->
+<!--                    <span class="dot"></span>-->
+<!--                    <span class="type">Микс</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        --><?php //render_wc_category_products('complect'); ?>
+<!--    </section>-->
+
+    <section class="catalog__category" id="navolochka">
+        <div class="catalog__category-head">
+            <h3 class="h3 catalog__h3">Наволочки</h3>
+        </div>
+        <?php render_wc_category_products('navolochka'); ?>
+    </section>
+
+    <section class="catalog__category" id="pododeyalnik">
+        <div class="catalog__category-head">
+            <h3 class="h3 catalog__h3">Пододеяльники</h3>
+        </div>
+        <?php render_wc_category_products('pododeyalnik'); ?>
+    </section>
+
+    <section class="catalog__category" id="prostin">
+        <div class="catalog__category-head">
+            <h3 class="h3 catalog__h3">Простыни</h3>
+        </div>
+        <?php render_wc_category_products('prostin'); ?>
+    </section>
+
+<?php
 /**
  * Hook: woocommerce_after_main_content.
  *
@@ -102,6 +201,7 @@ do_action( 'woocommerce_sidebar' );
 ?>
 
 </div>
+</main>
 
 <?php get_footer( 'shop' ); ?>
 

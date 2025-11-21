@@ -1,0 +1,155 @@
+@use '../../styles/helpers' as *;
+
+.bedding-builder {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  border-radius: 20px;
+  background: #fbf7f5;
+  margin-bottom: 24px;
+}
+
+.bedding-builder__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bedding-builder__title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.bedding-builder__subtitle {
+  color: #6f6f6f;
+  font-size: 14px;
+}
+
+.bedding-component {
+  padding: 20px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #f0e4de;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bedding-component__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.bedding-component__titles {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bedding-component__name {
+  font-weight: 600;
+}
+
+.bedding-component__note {
+  color: #8b8b8b;
+  font-size: 14px;
+}
+
+.bedding-component__size-current {
+  display: flex;
+  gap: 6px;
+  font-size: 14px;
+  color: #8b8b8b;
+  align-items: center;
+}
+
+.bedding-component__size-value {
+  font-weight: 600;
+  color: #141414;
+}
+
+.bedding-component__sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bedding-component__size-option {
+  border: 1px solid #d9d9d9;
+  border-radius: 999px;
+  padding: 6px 14px;
+  background: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.bedding-component__size-option.is-active {
+  border-color: #f58ca6;
+  color: #f05882;
+  background: #fff6f8;
+}
+
+.bedding-component__colors {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bedding-component__colors-header {
+  display: flex;
+  gap: 6px;
+  font-size: 14px;
+  color: #8b8b8b;
+}
+
+.bedding-component__color-value {
+  font-weight: 600;
+  color: #141414;
+}
+
+.bedding-component__color-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.bedding-component__color-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 12px;
+  transition: background-color 0.2s ease;
+}
+
+.bedding-component__color-option .dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.bedding-component__color-option .name {
+  font-size: 14px;
+}
+
+.bedding-component__color-option.is-active {
+  background: #fff6f8;
+}
+
+@media (max-width: 767px) {
+  .bedding-builder {
+    padding: 18px;
+  }
+
+  .bedding-component {
+    padding: 16px;
+  }
+}

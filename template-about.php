@@ -27,11 +27,24 @@ get_header();
     </section>
 
     <section class="three-images">
-        <div class="hero__images">
-            <img src="<?php echo get_template_directory_uri();?>/assets/images/three-image1.jpg" alt="Подушки" width="505" height="717">
-            <img src="<?php echo get_template_directory_uri();?>/assets/images/three-image2.jpg" alt="Одеяла" width="502" height="717">
-            <img src="<?php echo get_template_directory_uri();?>/assets/images/three-image3.jpg" alt="Подушки" width="505" height="717">
+
+        <div class="three-images js-about-slider swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="<?php echo get_template_directory_uri();?>/assets/images/three-image1.jpg" alt="Подушки" width="505" height="717">
+                </div>
+                <div class="swiper-slide">
+                    <img src="<?php echo get_template_directory_uri();?>/assets/images/three-image2.jpg" alt="Одеяла" width="502" height="717">
+                </div>
+                <div class="swiper-slide">
+                    <img src="<?php echo get_template_directory_uri();?>/assets/images/three-image3.jpg" alt="Подушки" width="505" height="717">
+                </div>
+            </div>
+
+            <div class="swiper-pagination swiper-pagination-hero"></div>
+
         </div>
+
     </section>
 
 </main>

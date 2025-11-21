@@ -9,3 +9,35 @@
   &--prev { left: rem(24); transform: translateY(-50%); @include mobile { @include hide } }
   &--next { right: rem(24); transform: translateY(-50%); @include mobile { @include hide } }
 }
+
+.swiper-scrollbar {
+  left: 0 !important;
+  height: rem(9) !important;
+  max-width: rem(706);
+  background: transparent;
+  border: 1px solid var(--color-black-05);
+  border-radius: 100px;
+  margin-top: fluid(40, 33);
+
+  @include mobile {
+    max-width: 100%;
+  }
+
+  &--products {
+    position: relative !important;
+  }
+
+  .swiper-scrollbar-drag {
+    background: var(--color-black-05);
+    border-radius: 100px;
+  }
+}
+
+.swiper-scrollbar-arrow {
+  position: absolute;
+  top: rem(2);
+  z-index: 10;
+
+  &--prev { left: rem(1); }
+  &--next { right: rem(1); }
+}

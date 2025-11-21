@@ -15,7 +15,9 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main container">
+
+        <?php woocommerce_breadcrumb(); ?>
 
 		<?php
 		while ( have_posts() ) :

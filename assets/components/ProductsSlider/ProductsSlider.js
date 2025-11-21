@@ -6,13 +6,19 @@ export default function sliderProducts() {
 
     sliders.forEach(slider => {
         new Swiper(slider, {
-            slidesPerView: 3,
+            slidesPerView: 'auto',
             spaceBetween: 40,
-            loop: true,
+            freeMode: true,
+            loop: false,
             speed: 500,
             navigation: {
                 nextEl: slider.querySelector('.slider-arrow--next'),
                 prevEl: slider.querySelector('.slider-arrow--prev'),
+            },
+            scrollbar: {
+                el: '.swiper-scrollbar',
+                draggable: true,
+                dragSize: 'auto',
             },
             breakpoints: {
                 0:   { slidesPerView: 2, spaceBetween: 10 },

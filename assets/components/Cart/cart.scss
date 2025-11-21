@@ -1,0 +1,15 @@
+@use '../../styles/helpers' as *;
+@use '../Button/button';
+
+//.wc-block-components-sidebar-layout.wc-block-cart {
+//  display: flex;
+//  flex-direction: column;
+//}
+//
+//.wc-block-components-sidebar-layout .wc-block-components-main {
+//  width: 100%;
+//}
+
+.wc-block-components-button {
+  @extend %btn;
+}

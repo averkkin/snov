@@ -3,14 +3,24 @@
 .three-images {
   display: flex;
   width: 100%;
+  height: fluid(717, 570);
 
   &__images {
     display: flex;
     width: 100%;
-    img {
-      flex: 1;
-      pointer-events: none;
-    }
+    height: inherit;
   }
 
+  & .swiper-slide {
+    width: inherit;
+    height: inherit;
+
+    img {
+      flex: 1;
+      object-fit: cover;
+      object-position: center;
+      height: 100%;
+      width: 100%;
+    }
+  }
 }

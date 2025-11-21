@@ -33,6 +33,10 @@
 @use '../components/Parameters/parameters.scss';
 @use '../components/ProductGallery/product-gallery.scss';
 @use '../components/Products/products.scss';
+@use '../components/BeddingComponents/bedding-components.scss';
+@use '../components/Catalog/catalog.scss';
+@use '../components/Cart/cart.scss';
+@use '../components/Error404/custom-error-404.scss';
 
 // blocks
 @use '../blocks/Hero/hero.scss';
@@ -42,4 +46,5 @@
 @use '../blocks/Callback/callback.scss';
 @use '../blocks/About/about.scss';
 @use '../blocks/ThreeImages/three-images.scss';
+@use '../blocks/CatalogHero/catalog-hero.scss';
 

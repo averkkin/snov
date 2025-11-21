@@ -38,10 +38,10 @@
 
     <nav class="header__menu">
         <ul class="header__menu-items">
-            <li class="hidden-tablet"><a href="">Каталог</a></li>
-            <li class="hidden-tablet"><a href="">О нас</a></li>
-            <li class="hidden-tablet"><a href="">Контакты</a></li>
-            <li class="hidden-tablet"><a href="">B2B</a></li>
+            <li class="hidden-tablet"><a href="/shop">Каталог</a></li>
+            <li class="hidden-tablet"><a href="/about">О нас</a></li>
+            <li class="hidden-tablet"><a href="/contact">Контакты</a></li>
+            <li class="hidden-tablet"><a href="/b2b">B2B</a></li>
         </ul>
         <button class="visible-tablet burger-button" type="button">Меню</button>
     </nav>
@@ -50,7 +50,7 @@
 
     <nav class="header__menu">
         <ul class="header__menu-items">
-            <li class="hidden-tablet"><a href="">Cертификат</a></li>
+            <li class="hidden-tablet"><a href="/gift-certificate">Cертификат</a></li>
             <li class="hidden-tablet"><a href="">Личный кабинет</a></li>
             <li><a href="">Корзина (0)</a></li>
         </ul>

@@ -1,0 +1,112 @@
+@use '../../styles/helpers' as *;
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+  gap: fluid(80, 40);
+
+
+  &__header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    width: 100%;
+    column-gap: rem(32);
+
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      gap: rem(32);
+      align-items: flex-start;
+    }
+
+    & nav ul {
+      display: flex;
+      gap: fluid-to-laptop(38, 10);
+
+      @include tablet{
+        flex-wrap: wrap;
+        gap: rem(20);
+      }
+
+      & li a {
+        @include fluid-text(20, 15);
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &__h3 {
+    @include fluid-text(24, 18);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__category {
+    display: flex;
+    flex-direction: column;
+    gap: fluid(47, 32);
+  }
+
+  &__category-head {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: rem(32);
+
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      gap: rem(24);
+    }
+  }
+
+  &__type-product {
+    display: flex;
+    gap: fluid(24, 12);
+    flex-wrap: wrap;
+  }
+
+  &__type-item {
+    display: inline-flex;
+    align-items: center;
+    gap: rem(6);
+    padding-block: rem(8);
+    padding-inline: rem(10);
+    border: 1px solid var(--color-black);
+    border-radius: 100px;
+    cursor: pointer;
+    transition: var(--transition-duration);
+    
+    @include hover {
+      border-color: var(--color-pink);
+      & .dot {
+        border-color: var(--color-pink);
+
+      }
+    }
+
+    &.is-active {
+      & .dot {
+        border: 4px solid var(--color-black);
+        transition: var(--transition-duration);
+      }
+    }
+
+    & .dot {
+      min-width: rem(16);
+      min-height: rem(16);
+      width: rem(16);
+      height: rem(16);
+      border: 1px solid var(--color-black);
+      border-radius: 100px;
+    }
+
+    & .type {
+      @include fluid-text(16, 14);
+      font-weight: 400;
+    }
+
+
+  }
+}
