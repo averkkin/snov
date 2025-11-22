@@ -15,66 +15,56 @@
  * @version 3.6.0
  */
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 global $product;
 
-/**
- * Hook: woocommerce_before_single_product.
- *
- * @hooked woocommerce_output_all_notices - 10
- */
-do_action('woocommerce_before_single_product');
+$images = $product->get_gallery_image_ids();
+$short_description = apply_filters('woocommerce_short_description', $product->get_short_description());
 
-if (post_password_required()) {
-    echo get_the_password_form(); // WPCS: XSS ok.
-    return;
-}
+
 ?>
+
 <main class="content">
-    <div id="product-<?php the_ID(); ?>" <?php wc_product_class('product-page container', $product); ?>>
+    <div class="product-page container">
 
         <?php woocommerce_breadcrumb(); ?>
 
         <div class="product-page__inner">
+            <!-- Галерея -->
+
             <div class="product-page__left-col">
-                <?php
-                /**
-                 * Hook: woocommerce_before_single_product_summary.
-                 *
-                 * @hooked woocommerce_show_product_sale_flash - 10
-                 * @hooked woocommerce_show_product_images - 20
-                 */
-                do_action('woocommerce_before_single_product_summary');
-                ?>
                 <div class="product-gallery">
                     <div class="product-gallery__main swiper product-main-swiper">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <?php
-                                $images = $product->get_gallery_image_ids();
-                                echo wp_get_attachment_image($product->get_image_id(), 'large');
-                                ?>
+                                <?php echo wp_get_attachment_image( $product->get_image_id(), 'large' ); ?>
                             </div>
 
                             <?php foreach ($images as $img_id): ?>
                                 <div class="swiper-slide">
-                                    <?php echo wp_get_attachment_image($img_id, 'large'); ?>
+                                    <?php echo wp_get_attachment_image( $img_id, 'large' ); ?>
                                 </div>
                             <?php endforeach; ?>
                         </div>
+
+                        <!-- Пагинация (точки) -->
                         <div class="swiper-pagination visible-mobile"></div>
                     </div>
+
+
                     <?php if ($images): ?>
                         <div class="product-gallery__thumbs swiper product-thumbs-swiper">
                             <div class="swiper-wrapper">
 
+                                <!-- Сначала миниатюра главной картинки -->
                                 <div class="swiper-slide">
                                     <div class="thumb-box">
-                                        <?php echo wp_get_attachment_image($product->get_image_id(), 'medium_large'); ?>
+                                        <?php echo wp_get_attachment_image( $product->get_image_id(), 'medium_large' ); ?>
                                     </div>
                                 </div>
 
+                                <!-- Затем миниатюры из галереи -->
                                 <?php foreach ($images as $img_id): ?>
                                     <div class="swiper-slide">
                                         <div class="thumb-box">
@@ -86,44 +76,51 @@ if (post_password_required()) {
                             </div>
 
                             <div class="thumbs-swiper-button-prev">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/product-arrow-left.svg"
-                                     alt="">
+                                <img src="<?php echo get_template_directory_uri();?>/assets/icons/product-arrow-left.svg" alt="">
                             </div>
                             <div class="thumbs-swiper-button-next">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/product-arrow-right.svg"
-                                     alt="">
+                                <img src="<?php echo get_template_directory_uri();?>/assets/icons/product-arrow-right.svg" alt="">
                             </div>
                         </div>
                     <?php endif; ?>
-                </div><!-- .product-gallery -->
-            </div><!-- .product-page__left-col -->
+
+                </div>
+            </div>
+
+            <!-- Правая колонка: информация -->
             <div class="product-info">
+
                 <div class="product-info__header">
+
                     <div class="product-info__category">
                         <?php
-                        echo get_parent_product_category(get_the_ID());
+                        echo get_parent_product_category( get_the_ID() );
                         ?>
                         <?php
                         $product_id = wc_get_product();
-                        echo $product_id->get_meta('_custom-color_field', true);
+                        echo $product_id->get_meta( '_custom-color_field', true );
                         ?>
                     </div>
+
                     <div class="product-info__header--inner">
-                        <?php the_title('<h1 class="product_title entry-title product-info__title">', '</h1>'); ?>
-                        <div class="product-info__price" data-default-price="<?php echo esc_attr( $product->get_price_html() ); ?>">
-                            <?php
-                                do_action('custom_price_hook');
-                            ?>
+
+                        <h1 class="product-info__title"><?php the_title(); ?></h1>
+
+                        <div class="product-info__price">
+                            <?php echo $product->get_price_html(); ?>
                         </div>
+
                     </div>
+
                 </div>
+
                 <div class="product-info__main">
-                    <?php $short_description = apply_filters('woocommerce_short_description', $product->get_short_description()); ?>
                     <?php if ($short_description): ?>
                         <div class="product-info__short">
                             <?php echo wp_kses_post($short_description); ?>
                         </div>
                     <?php endif; ?>
+
                     <!-- Цвет (ссылки на другие товары) -->
                     <div class="product-info__colors">
                         <span>Цвет:</span>
@@ -144,7 +141,7 @@ if (post_password_required()) {
 
                                 $color_custom_name = get_post_meta($id, '_snov_color_name', true);
                                 $color_name = $color_custom_name ? $color_custom_name : $color_product->get_name();
-                                $color_hex = get_post_meta($id, '_snov_color_hex', true);
+                                $color_hex  = get_post_meta($id, '_snov_color_hex', true);
 
                                 if (!$color_hex) {
                                     $color_hex = '#ccc'; // fallback
@@ -164,34 +161,11 @@ if (post_password_required()) {
                         }
                         ?>
                     </div>
-                    <?php
-                    /**
-                     * Hook: woocommerce_single_product_summary.
-                     *
-                     * @hooked woocommerce_template_single_title - 5
-                     * @hooked woocommerce_template_single_rating - 10
-                     * @hooked woocommerce_template_single_price - 10
-                     * @hooked woocommerce_template_single_excerpt - 20
-                     * @hooked woocommerce_template_single_add_to_cart - 30
-                     * @hooked woocommerce_template_single_meta - 40
-                     * @hooked woocommerce_template_single_sharing - 50
-                     * @hooked WC_Structured_Data::generate_product_data() - 60
-                     */
-                    do_action('woocommerce_single_product_summary');
-                    ?>
+
                     <div class="product-info__cart">
                         <?php woocommerce_template_single_add_to_cart(); ?>
                     </div>
-                    <?php
-                    /**
-                     * Hook: woocommerce_after_single_product_summary.
-                     *
-                     * @hooked woocommerce_output_product_data_tabs - 10
-                     * @hooked woocommerce_upsell_display - 15
-                     * @hooked woocommerce_output_related_products - 20
-                     */
-                    do_action('woocommerce_after_single_product_summary');
-                    ?>
+
                 </div>
                 <div class="product-info__footer">
                     <!-- Аккордеон -->
@@ -199,9 +173,10 @@ if (post_password_required()) {
                         <?php do_action('snov_product_accordion'); ?>
                     </div>
                 </div>
-            </div><!-- .product-info -->
-        </div><!-- .product-page__inner -->
-    </div><!-- .product-page .container -->
+            </div>
+        </div>
+
+    </div>
 
     <section class="slider-large">
 
@@ -209,41 +184,69 @@ if (post_password_required()) {
             <h2 class="h2 section-title__h2 section-title--semibold">Вам могут понравиться</h2>
         </div>
 
-        <?php render_category_slider('', 'hits-sales'); ?>
+        <?php render_category_slider('', 'hits-sales');?>
 
-    </section><!-- .slider-large -->
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector(".variations_form");
+            const variationInput = form.querySelector(".variation_id");
+
+            // Все селекты вариаций, даже если они НЕ внутри формы
+            const selects = document.querySelectorAll(".product-info__main select");
+
+            selects.forEach(select => {
+                select.addEventListener("change", () => {
+                    setTimeout(() => {
+                        const variationIdField = document.querySelector(".variation_id");
+
+                        // WooCommerce сам создаёт это поле на странице при выборе
+                        const selected = document.querySelector("input.variation_id");
+
+                        if (selected && selected.value) {
+                            variationInput.value = selected.value;
+                        }
+                    }, 10);
+                });
+            });
+        });
+
+    </script>
 
 </main>
-<script type="text/javascript">
 
-    jQuery(function($){
+<!--function custom_variable_min_price($price, $product) {-->
+<!--// Получаем все цены вариаций-->
+<!--$prices = $product->get_variation_prices( true );-->
+<!---->
+<!--if ( empty( $prices['price'] ) ) {-->
+<!--return $price;-->
+<!--}-->
+<!---->
+<!--// Минимальные значения-->
+<!--$min_regular = ! empty( $prices['regular_price'] ) ? min( $prices['regular_price'] ) : false;-->
+<!--$min_sale    = ! empty( $prices['sale_price'] ) ? min( array_filter( $prices['sale_price'] ) ) : false;-->
+<!---->
+<!--// Если есть акционная цена-->
+<!--if ( $min_sale && $min_sale < $min_regular ) {-->
+<!--return '<ins>' . wc_price( $min_sale ) . '</ins> <del>' . wc_price( $min_regular ) . '</del>';-->
+<!--}-->
+<!---->
+<!--// Если скидок нет — показываем обычную минимальную цену-->
+<!--return '<ins>' . wc_price( $min_regular ) . '</ins>';-->
+<!--}-->
 
-        const headerPrice = $('.product-info__price');
-        const variationForm = $('form.variations_form');
+<!--function custom_add_to_cart_text() {-->
+<!--global $product;-->
+<!---->
+<!--if ( ! $product instanceof WC_Product ) {-->
+<!--return;-->
+<!--}-->
+<!---->
+<!--$price_html = wc_price( $product->get_price() );-->
+<!--$price_clean = strip_tags( $price_html );-->
+<!--return __( 'Добавить в корзину ' . $price_clean, 'woocommerce' );-->
+<!--}-->
+<!--add_filter( 'woocommerce_product_single_add_to_cart_text', 'custom_add_to_cart_text' );-->
 
-        variationForm.on('found_variation', function(event, variation){
-            if (variation && variation.price_html) {
-                headerPrice.html(variation.price_html);
-            }
-        });
-
-        variationForm.on('hide_variation', function(){
-
-            const fallbackVariationPrice = $('.single_variation_wrap .woocommerce-variation-price .price').html();
-
-            if (fallbackVariationPrice) {
-                headerPrice.html(fallbackVariationPrice);
-            } else {
-
-                const originalPrice = headerPrice.data('default-price');
-
-                if (originalPrice) {
-                    headerPrice.html(originalPrice);
-                }
-            }
-        });
-
-    });
-
-</script>
-<?php do_action('woocommerce_after_single_product'); ?>

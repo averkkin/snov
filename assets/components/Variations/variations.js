@@ -1,17 +1,15 @@
 export default function productSizeSelect() {
-
     const widgets = document.querySelectorAll('.product-size-select');
     if (!widgets.length) return;
 
     widgets.forEach(widget => {
-
         const trigger = widget.querySelector('.product-size-select__trigger');
         const valueEl = trigger.querySelector('.value');
         const dropdown = widget.querySelector('.product-size-select__dropdown');
         const nativeSelect = widget.querySelector('.snov-size-native-select');
         const options = widget.querySelectorAll('.product-size-option');
 
-        // Открыть/закрыть dropdown
+        // Открыть/закрыть
         trigger.addEventListener('click', () => {
             widget.classList.toggle('is-open');
         });
@@ -19,73 +17,48 @@ export default function productSizeSelect() {
         // Выбор значения
         options.forEach(option => {
             option.addEventListener('click', () => {
-
                 const val = option.dataset.value;
 
-                // UI
-                valueEl.textContent = val;
+                valueEl.textContent = option.textContent.trim();
                 options.forEach(o => o.classList.remove('active'));
                 option.classList.add('active');
                 widget.classList.remove('is-open');
 
-                // WooCommerce + нативное обновление вариации
-                jQuery(nativeSelect)
-                    .val(val)
-                    .trigger('change')
-                    .trigger('woocommerce_variation_select_change')
-                    .trigger('check_variations');
-            });
+                // Прокидываем в скрытый select
+                nativeSelect.value = val;
 
+                // Дальше — стандартный WooCommerce-поток
+                const $select = jQuery(nativeSelect);
+                $select.trigger('change');
+            });
         });
 
-
-        // Автовыбор первой опции
+        // Авто-выбор первой опции (если хочешь)
         const first = nativeSelect.querySelector('option.attached.enabled');
         if (first && !nativeSelect.value) {
             nativeSelect.value = first.value;
-            valueEl.textContent = first.value;
-
-            // отметка в UI
-            options[0].classList.add('active');
-
+            valueEl.textContent = first.textContent.trim();
+            options[0]?.classList.add('active');
             jQuery(nativeSelect).trigger('change');
         }
-
     });
 
-
-    // WooCommerce events: update price
-    const priceEl = document.querySelector('.dynamic-price');
-
-    jQuery('form.variations_form').on('show_variation', function(event, variation) {
-        if (priceEl) priceEl.innerHTML = variation.price_html;
-    });
-
-    jQuery('form.variations_form').on('hide_variation reset_data', function() {
-        if (priceEl) priceEl.innerHTML = priceEl.dataset.defaultPrice;
-    });
-
+    // Обновление цены по show_variation / reset_data
     jQuery(function($) {
-
+        const $form = $('form.variations_form');
         const priceEl = document.querySelector('.dynamic-price');
-        if (!priceEl) return;
+        if (!$form.length || !priceEl) return;
 
-        const defaultPrice = priceEl.dataset.defaultPrice;
+        const defaultPrice = priceEl.dataset.defaultPrice || priceEl.innerHTML;
 
-        // При выборе вариации WooCommerce передаёт price_html
-        $('form.variations_form').on('show_variation', function(event, variation) {
+        $form.on('show_variation', function(event, variation) {
             if (variation && variation.price_html) {
                 priceEl.innerHTML = variation.price_html;
             }
         });
 
-        // Если вариация сброшена (например, нет комбинации)
-        $('form.variations_form').on('reset_data hide_variation', function() {
+        $form.on('reset_data hide_variation', function() {
             priceEl.innerHTML = defaultPrice;
         });
-
     });
-
-
 }
-

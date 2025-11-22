@@ -42,7 +42,7 @@
                     <ul>
                         <li><a href="/gift-certificate">Сертификат</a></li>
                         <li><a href="">Личный кабинет</a></li>
-                        <li class="hidden-mobile"><button type="button" class="footer__cart">Корзина (<span>0</span>)</button></li>
+                        <li class="hidden-mobile"><a href="/cart/" class="footer__cart">Корзина (<span id="cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>)</a></li>
                     </ul>
                 </nav>
                 <a href="#header" class="visible-mobile"><div class="arrow-up"><img src="<?php echo get_template_directory_uri();?>/assets/icons/arrow-up.svg" alt="Наверх"></div></a>

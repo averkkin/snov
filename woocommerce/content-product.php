@@ -52,7 +52,13 @@ if (!is_a($product, WC_Product::class) || !$product->is_visible()) {
     </a>
     <div class="product-card__meta">
         <span class="product-card__category">
-
+            <?php
+                echo get_parent_product_category( get_the_ID() );
+            ?>
+            <?php
+                $product_id = wc_get_product();
+                echo $product_id->get_meta( '_custom-color_field', true );
+            ?>
         </span>
         <div class="product-card__info">
             <a href="<?php the_permalink(); ?>" class="product-card__title">

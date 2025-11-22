@@ -6,6 +6,9 @@ if ( ! defined( '_S_VERSION' ) ) {
 function snov_group_setup() {
     add_theme_support( 'title-tag' );
     add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'woocommerce' );
+//    add_theme_support( 'wc-product-gallery-zoom' );
+
     register_nav_menus([
         'menu-1' => __( 'Primary Menu', 'snov-group' ),
     ]);

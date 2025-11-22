@@ -1,121 +1,72 @@
 @use '../../styles/helpers' as *;
 
-.variations_form select {
-  display: none !important;
+.variations_form.cart {
+  @include fluid-text(16, 15);
+  display: flex;
+  flex-direction: column;
+  gap: rem(16);
 }
 
-.variations_form .variations,
-.variations_form .reset_variations {
-  display: none !important;
+.variations-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
+.variation-item {
+  display: flex;
+  align-items: center;
+  gap: rem(8);
+}
 
-.product-size-select {
+.variation-label label {
+  @include fluid-text(16, 15);
+  font-weight: 500;
+}
+
+.variation-value {
+  position: relative;
   display: flex;
   gap: rem(8);
-  position: relative;
+  align-items: center;
 
-
-  &__trigger { width: 100%; display: flex; align-items: center; justify-content: flex-start; background: transparent; border: none; cursor: pointer; padding: 0; .label { @include fluid-text(16, 15); font-weight: 600; } .value { @include fluid-text(16, 15); font-weight: 500; } .arrow { width: fluid(12, 8); background-size: contain; background-repeat: no-repeat; margin-left: rem(6); transition: transform 0.2s ease; } }
-
-    & label {
-      @include fluid-text(16, 15);
-      font-weight: 600;
-    }
-    //
-    //.value {
-    //  @include fluid-text(16, 15);
-    //  font-weight: 500;
-    //}
-    //
-    //.arrow {
-    //  width: fluid(12, 8);
-    //  background-size: contain;
-    //  background-repeat: no-repeat;
-    //  margin-left: rem(6);
-    //  transition: transform 0.2s ease;
-    //}
-
-  &.is-open .arrow {
-    transform: rotate(180deg);
-  }
-
-  &__dropdown {
-    position: absolute;
-    top: calc(100% + 10px);
-    left: 0;
-    background: #fff;
-    border-radius: var(--border-radius-m);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-    padding: 12px 0;
-    display: none;
-    z-index: 20;
-    width: fit-content;
-
-    @include mobile {
-      border-radius: var(--border-radius-s);
-    }
-
-    .product-size-option {
-      @include fluid-text(16 ,15);
-
-      width: 100%;
-      padding: 9px 18px;
-      background: transparent;
-      border: none;
-      text-align: left;
-      cursor: pointer;
-
-      &:hover {
-        background: #f6f6f6;
-      }
-
-      &.active {
-        font-weight: 500;
-        background: #f2f2f2;
-      }
-    }
-  }
-
-  &.is-open &__dropdown {
+  &::after {
+    content: '';
     display: block;
+    width: rem(12);
+    height: rem(6);
+    pointer-events: none;
+
+    background-image: url('https://snov.group/wp-content/themes/snov-group/assets/icons/arrow-dd.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 }
 
-.woocommerce-variation-price {
-  display: none !important;
+.variation-value select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  border: none;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.dynamic-price {
-  display: flex;
-  gap: fluid(16, 5);
-  align-items: flex-end;
-  font-weight: 500;
+.variation-value select {
+  @include fluid-text(16, 15);
+  font-weight: 400;
+  outline: none;
+  box-shadow: none;
+}
 
-  & ins {
-    @include fluid-text(40, 20);
-    text-decoration-line: none;
-    order: 1;
-    font-weight: 600;
-  }
+.variation-value select option:hover {
+  color: (--color-pink);
+}
 
-  & del {
-    @include fluid-text(32, 14);
-    opacity: 0.5;
-    order: 2;
-  }
-
-  & .price-discount {
-    @include fluid-text(16, 10);
-
-    order: 3;
-    display: inline-flex;
-    align-items: center;
-    background-color: var(--color-pink);
-    padding-block: rem(6);
-    padding-inline: rem(8);
-    color: var(--color-white);
-  }
+.variation-value select:focus {
+  border: none;
 }
 
 .woocommerce-variation-description {
@@ -127,3 +78,23 @@
     font-weight: 500;
   }
 }
+
+.product-page .woocommerce-variation.single_variation {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.single_variation_wrap {
+  display: flex;
+  flex-direction: column;
+  gap: rem(40);
+}
+
+.woocommerce-message {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  left: -9999px;
+}
+

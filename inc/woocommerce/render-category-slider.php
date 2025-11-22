@@ -44,31 +44,10 @@ function render_category_slider( $title, $slug ) {
                                 <div class="product-card__meta">
 
                                     <span class="product-card__category">
+                                        <?php echo get_parent_product_category( get_the_ID() ); ?>
                                         <?php
-                                        $product_id = get_the_ID();
-
-                                        // Список исключаемых категорий
-                                        $excluded_cats = [
-                                            'Хиты продаж',
-                                        ];
-                                        $terms = get_the_terms( $product_id, 'product_cat' );
-
-                                        $main_cat = '';
-
-                                        if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
-                                            foreach ( $terms as $term ) {
-
-                                                if ( ! in_array( mb_strtolower( $term->name ), $excluded_cats ) ) {
-                                                    $main_cat = $term->name;
-                                                    break;
-                                                }
-                                            }
-                                        }
-
-                                        // Вывод категории
-                                        if ( $main_cat ) {
-                                            echo esc_html( $main_cat );
-                                        }
+                                            $product_id = wc_get_product();
+                                            echo $product_id->get_meta( '_custom-color_field', true );
                                         ?>
                                     </span>
 

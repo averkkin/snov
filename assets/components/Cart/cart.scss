@@ -1,15 +1,106 @@
 @use '../../styles/helpers' as *;
 @use '../Button/button';
 
-//.wc-block-components-sidebar-layout.wc-block-cart {
-//  display: flex;
-//  flex-direction: column;
-//}
-//
-//.wc-block-components-sidebar-layout .wc-block-components-main {
-//  width: 100%;
-//}
 
 .wc-block-components-button {
   @extend %btn;
+}
+.cart-page .quantity {
+  display: flex !important;
+}
+
+.page-cart {
+  display: flex;
+  flex-direction: column;
+  margin-top: fluid(60, 32);
+  gap: fluid(40, 24);
+  width: 100%;
+
+  &__breadcrumb {
+    margin-top: fluid(40, 24);
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: fluid(32, 24);
+    width: 100%;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 100%;
+    position: relative;
+    column-gap: rem(20);
+    padding-bottom: rem(24);
+    border-bottom: var(--border);
+  }
+
+  &__thumb {
+    border-radius: var(--border-radius-m);
+    width: fluid(294, 140);
+    height: fluid(230, 100);
+    overflow: hidden;
+
+    @include mobile {
+      border-radius: var(--border-radius-s);
+    }
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &__label {
+    @include fluid-text(14, 12);
+    font-weight: 600;
+    opacity: 0.5;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__value {
+    display: flex;
+    flex-direction: column;
+    gap: rem(8);
+    @include mobile-above {
+      margin-top: fluid(40, 15);
+    }
+  }
+
+  &__category {
+    font-size: rem(12);
+    font-weight: 600;
+  }
+
+  &__title {
+    font-size: rem(20);
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__quantity {
+    @include fluid-text(20, 14);
+    font-weight: 500;
+    
+  }
+
+  &__delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
 }

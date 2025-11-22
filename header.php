@@ -43,7 +43,7 @@
             <li class="hidden-tablet"><a href="/contact">Контакты</a></li>
             <li class="hidden-tablet"><a href="/b2b">B2B</a></li>
         </ul>
-        <button class="visible-tablet burger-button" type="button">Меню</button>
+        <a href="/cart/" class="visible-tablet burger-button">Меню</a>
     </nav>
 
     <a href="<?php echo home_url('/'); ?>"><img src="<?php echo get_template_directory_uri();?>/assets/icons/logo.svg" alt="Логотип СНОВ" aria-label="Логотип СНОВ" class="header__logo logo" width="163" height="35"></a>
@@ -52,7 +52,7 @@
         <ul class="header__menu-items">
             <li class="hidden-tablet"><a href="/gift-certificate">Cертификат</a></li>
             <li class="hidden-tablet"><a href="">Личный кабинет</a></li>
-            <li><a href="">Корзина (0)</a></li>
+            <li><a href="/cart/">Корзина (<span id="cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>)</a></li>
         </ul>
     </nav>
 

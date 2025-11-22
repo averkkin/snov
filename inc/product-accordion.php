@@ -18,7 +18,7 @@ add_action('snov_product_accordion', function() {
 
         <?php if ($details): ?>
         <div class="product-accordion__item is-open">
-            <button class="product-accordion__header">
+            <button type="button" class="product-accordion__header">
                 <span>Детали</span>
                 <span class="product-accordion__icon"></span>
             </button>
@@ -30,7 +30,7 @@ add_action('snov_product_accordion', function() {
 
         <?php if ($care): ?>
         <div class="product-accordion__item">
-            <button class="product-accordion__header">
+            <button type="button" class="product-accordion__header">
                 <span>Правила ухода</span>
                 <span class="product-accordion__icon"></span>
             </button>
@@ -42,7 +42,7 @@ add_action('snov_product_accordion', function() {
 
         <?php if ($delivery): ?>
         <div class="product-accordion__item">
-            <button class="product-accordion__header">
+            <button type="button" class="product-accordion__header">
                 <span>Доставка и возврат</span>
                 <span class="product-accordion__icon"></span>
             </button>

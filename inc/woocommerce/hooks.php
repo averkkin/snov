@@ -1,6 +1,5 @@
 <?php
 
-// Remove breadcrumb
 remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
 
 remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10);
@@ -16,6 +15,26 @@ remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
 remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination', 10);
 
+// content-single-product.php
+remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10);
+remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20);
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 40);
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
+
+
+// custom hooks
+add_action( 'custom_price_hook', 'woocommerce_template_single_price', 10 );
+add_action( 'custom_excerpt_hook', 'woocommerce_template_single_excerpt', 10 );
+add_action( 'custom_add-to-cart_hook', 'woocommerce_template_single_add_to_cart', 10 );
+
+
+
 add_filter('woocommerce_get_image_size_thumbnail', function($size) {
     return [
         'width'  => 600,
@@ -23,36 +42,6 @@ add_filter('woocommerce_get_image_size_thumbnail', function($size) {
         'crop'   => 0,
     ];
 });
-
-add_filter( 'woocommerce_get_breadcrumb', function( $crumbs, $breadcrumb ) {
-
-    if ( is_singular('product') ) {
-
-        foreach ($crumbs as $index => $crumb) {
-            if ($index > 0 && $index < count($crumbs) - 1) {
-                unset($crumbs[$index]);
-            }
-        }
-        $catalog_link = home_url('/shop/');
-
-        $new_crumbs = [];
-
-        foreach ($crumbs as $index => $crumb) {
-            $new_crumbs[] = $crumb;
-
-            if ($index === 0) {
-                $new_crumbs[] = [
-                    'Каталог',
-                    $catalog_link
-                ];
-            }
-        }
-
-        return $new_crumbs;
-    }
-
-    return $crumbs;
-}, 20, 2 );
 
 
 

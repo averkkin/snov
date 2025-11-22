@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     smoothScroll();
     sliderProducts();
     productAccordion();
-    productSizeSelect();
+    // productSizeSelect();
     beddingComponents();
     sliderHero();
     sliderAbout();
