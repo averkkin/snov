@@ -35,12 +35,46 @@
     column-gap: rem(20);
     padding-bottom: rem(24);
     border-bottom: var(--border);
+
+    @include mobile {
+      display: flex;
+      gap: rem(16);
+    }
+
+    &--inner {
+      display: contents;
+
+      @include mobile {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: rem(8);
+      }
+    }
+  }
+
+  &__item-name {
+    @include mobile {
+      order: 1;
+    }
+  }
+
+  &__item-total {
+    @include mobile {
+      order: 2;
+    }
+  }
+
+  &__item-quantity {
+    @include mobile {
+      order: 3;
+    }
   }
 
   &__thumb {
     border-radius: var(--border-radius-m);
     width: fluid(294, 140);
-    height: fluid(230, 100);
+    height: fluid(230, 140);
     overflow: hidden;
 
     @include mobile {
@@ -88,7 +122,7 @@
   &__quantity {
     @include fluid-text(20, 14);
     font-weight: 500;
-    
+
   }
 
   &__delete {
@@ -101,6 +135,132 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
+    column-gap: fluid(100, 32);
+
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      gap: rem(32);
+    }
   }
+
+  &__note {
+    display: flex;
+    flex-direction: column;
+    gap: fluid(20, 16);
+
+    & label {
+      @include fluid-text(14, 12);
+      font-weight: 600;
+      opacity: 0.5;
+    }
+
+    & textarea {
+      @include fluid-text(14, 10);
+      font-weight: 400;
+      border: var(--border);
+      transition: var(--transition-duration);
+      border-radius: var(--border-radius-m);
+      padding: rem(16);
+
+      @include mobile {
+        border-radius: var(--border-radius-s);
+      }
+
+      &:focus {
+        border-color: var(--color-pink);
+      }
+    }
+
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+
+    @include mobile {
+      display: contents;
+    }
+
+    &:first-child {
+      gap: rem(40);
+    }
+
+    &:last-child {
+      gap: rem(32);
+    }
+  }
+
+  &__action {
+    display: flex;
+    flex-direction: column;
+    gap: rem(17);
+
+    @include mobile {
+      order: 4;
+    }
+  }
+
+  &__summary {
+    @include fluid-text(24, 22);
+    font-weight: 600;
+  }
+
+  &__group-fields {
+    display: flex;
+    flex-direction: column;
+    gap: rem(16);
+
+    & label {
+      @include fluid-text(16, 15);
+      font-weight: 500;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    max-width: rem(545);
+
+    & input {
+      padding-inline: rem(16);
+      padding-block: rem(8);
+      font-size: rem(16);
+      font-weight: 400;
+      border: var(--border);
+      transition: var(--transition-duration);
+      border-radius: 100px 0 0 100px;
+      width: 60%;
+      height: rem(36);
+
+      &:focus {
+        border-color: var(--color-pink);
+      }
+    }
+
+    & button {
+      font-size: rem(14);
+      font-weight: 500;
+      width: 40%;
+      height: rem(36);
+      background-color: #FBE7F2;
+      color: var(--color-black);
+      border: var(--border);
+      border-left: none;
+
+      @include hover {
+        background-color: var(--color-pink);
+        color: var(--color-white);
+      }
+    }
+  }
+
+  &__group-button {
+    border-radius: 0 100px 100px 0;
+  }
+
+
+
+
+
 
 }

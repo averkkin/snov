@@ -119,3 +119,10 @@ a {
 :focus-visible {
   @include focus-visible;
 }
+
+.color {
+
+  &--pink {
+    color: var(--color-pink);
+  }
+}
