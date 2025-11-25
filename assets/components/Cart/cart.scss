@@ -5,8 +5,27 @@
 .wc-block-components-button {
   @extend %btn;
 }
-.cart-page .quantity {
-  display: flex !important;
+
+.page-cart .quantity {
+  max-width: inherit;
+  position: relative;
+  @include abs-center;
+
+  & input {
+    max-width: 20px;
+    text-align: center;
+  }
+
+  & .qty::-webkit-inner-spin-button,
+  & .qty::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  & .qty {
+    -moz-appearance: textfield;
+  }
+
 }
 
 .page-cart {
@@ -133,7 +152,7 @@
 
   &__footer {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     width: 100%;
     column-gap: fluid(100, 32);
 
@@ -258,9 +277,23 @@
     border-radius: 0 100px 100px 0;
   }
 
+  &__quantity {
+    display: flex;
+    padding-block: fluid(8, 6);
+    padding-inline: fluid(32, 12);
+    justify-content: space-between;
+    width: 100%;
+    max-width: fluid(155, 90);
+    border: var(--border);
+    transition: var(--transition-duration);
+    border-radius: 100px;
+    position: relative;
 
-
-
-
+    & button {
+      @include hover {
+        color: var(--color-pink);
+      }
+    }
+  }
 
 }

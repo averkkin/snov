@@ -75,6 +75,10 @@ do_action( 'woocommerce_shop_loop_header' );
         <div class="catalog__category-head">
             <h3 class="h3 catalog__h3">Подушки</h3>
             <div class="catalog__type-product">
+                <div class="catalog__type-item" data-tab="all-pillows">
+                    <span class="dot"></span>
+                    <span class="type">Все подушки</span>
+                </div>
                 <div class="catalog__type-item" data-tab="soft">
                     <span class="dot"></span>
                     <span class="type">Софт</span>
@@ -92,6 +96,12 @@ do_action( 'woocommerce_shop_loop_header' );
                     <span class="type">Бейсик</span>
                 </div>
             </div>
+        </div>
+        <div class="catalog__loop catalog__all-products" data-category="all-pillows">
+            <?php render_wc_category_products('soft'); ?>
+            <?php render_wc_category_products('balance'); ?>
+            <?php render_wc_category_products('balance-plus'); ?>
+            <?php render_wc_category_products('base'); ?>
         </div>
         <div class="catalog__loop" data-category="soft">
             <?php render_wc_category_products('soft'); ?>
@@ -113,6 +123,10 @@ do_action( 'woocommerce_shop_loop_header' );
         <div class="catalog__category-head">
             <h3 class="h3 catalog__h3">Одеяла</h3>
             <div class="catalog__type-product">
+                <div class="catalog__type-item" data-tab="all-blankets">
+                    <span class="dot"></span>
+                    <span class="type">Все одеяла</span>
+                </div>
                 <div class="catalog__type-item" data-tab="for-one">
                     <span class="dot"></span>
                     <span class="type">Для одного</span>
@@ -125,11 +139,13 @@ do_action( 'woocommerce_shop_loop_header' );
                     <span class="dot"></span>
                     <span class="type">Пуховик</span>
                 </div>
-                <div class="catalog__type-item" data-tab="down-jacket-mini">
-                    <span class="dot"></span>
-                    <span class="type">Пуховик мини</span>
-                </div>
             </div>
+        </div>
+
+        <div class="catalog__loop catalog__all-products" data-category="all-blankets">
+            <?php render_wc_category_products('for-one'); ?>
+            <?php render_wc_category_products('for-two'); ?>
+            <?php render_wc_category_products('down-jacket'); ?>
         </div>
 
         <div class="catalog__loop" data-category="for-one">
@@ -140,9 +156,6 @@ do_action( 'woocommerce_shop_loop_header' );
         </div>
         <div class="catalog__loop" data-category="down-jacket">
             <?php render_wc_category_products('down-jacket'); ?>
-        </div>
-        <div class="catalog__loop" data-category="down-jacket-mini">
-            <?php render_wc_category_products('down-jacket-mini'); ?>
         </div>
     </section>
 

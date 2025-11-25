@@ -27,6 +27,31 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
 
+// cart.php
+remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10);
+remove_action( 'woocommerce_before_cart', 'woocommerce_output_all_notices', 10 );
+
+// /checkout
+remove_action( 'woocommerce_before_checkout_form', 'woocommerce_breadcrumb', 20 );
+
+
+// редирект на page-thankyou.php
+add_filter( 'template_include', 'custom_thankyou_page_template' );
+
+function custom_thankyou_page_template( $template ) {
+
+    if ( is_wc_endpoint_url( 'order-received' ) ) {
+
+        $new = get_stylesheet_directory() . '/page-thankyou.php';
+
+        if ( file_exists( $new ) ) {
+            return $new;
+        }
+    }
+
+    return $template;
+}
+
 
 // custom hooks
 add_action( 'custom_price_hook', 'woocommerce_template_single_price', 10 );

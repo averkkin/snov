@@ -4,6 +4,7 @@
   display: flex;
   width: 100%;
   height: fluid(717, 570);
+  position: relative;
 
   @include mobile-s {
     height: rem(570);
@@ -31,20 +32,16 @@
   }
 
   &__btn {
-    @include abs-x;
+    position: absolute;
+    left: 50%;
     bottom: rem(80);
+    transform: translateX(-50%);
     z-index: 99;
 
-    @include laptop {
-      bottom: rem(100);
-    }
-
-    @include tablet {
-      bottom: rem(200);
-    }
-
-    @include mobile-s {
-      @include abs-center;
+    @include mobile {
+      top: 50%;
+      transform: translate(-50%, -50%);
+      bottom: inherit;
     }
   }
 

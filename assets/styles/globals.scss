@@ -85,6 +85,10 @@ h6, .h6 {
     color: var(--color-pink);
   }
 
+  &--medium {
+    font-weight: 500;
+  }
+
   &--semibold {
     font-weight: 600;
   }
@@ -126,3 +130,4 @@ a {
     color: var(--color-pink);
   }
 }
+

@@ -1,48 +1,83 @@
 @use '../../styles/helpers' as *;
 
-.wc-block-components-form .wc-block-components-checkout-step {
-  padding-block: fluid(40, 24) !important;
-  padding-inline: rem(24) !important;
-  border-radius: var(--border-radius-m);
-  background-color: var(--color-black-05) !important;
+.custom-checkout {
 
-  @include mobile {
-    border-radius: var(--border-radius-s);
+  & .wc-block-components-form .wc-block-components-checkout-step {
+    padding-block: fluid(40, 24) !important;
+    padding-inline: rem(24) !important;
+    border-radius: var(--border-radius-m);
+    background-color: var(--color-black-05) !important;
+
+    @include mobile {
+      border-radius: var(--border-radius-s);
+    }
   }
-}
 
-.wc-block-components-title.wc-block-components-checkout-step__title {
-  @include fluid-text(20, 16);
-  font-weight: 600;
-  text-transform: none;
-  color: var(--color-black);
-}
+  & .wc-block-components-title.wc-block-components-checkout-step__title {
+    @include fluid-text(20, 16);
+    font-weight: 600;
+    text-transform: none;
+    color: var(--color-black);
+  }
 
-.wc-block-components-textarea, .wc-block-components-form .wc-block-components-text-input input[type=email], .wc-block-components-form .wc-block-components-text-input input[type=number], .wc-block-components-form .wc-block-components-text-input input[type=password], .wc-block-components-form .wc-block-components-text-input input[type=tel], .wc-block-components-form .wc-block-components-text-input input[type=text], .wc-block-components-form .wc-block-components-text-input input[type=url], .wc-block-components-text-input input[type=email], .wc-block-components-text-input input[type=number], .wc-block-components-text-input input[type=password], .wc-block-components-text-input input[type=tel], .wc-block-components-text-input input[type=text], .wc-block-components-text-input input[type=url] {
-  @include fluid-text(16, 14);
-  border-color: #909090  !important;
-  background-color: transparent  !important;
-}
+  & .wc-block-components-textarea, .wc-block-components-form .wc-block-components-text-input input[type=email], .wc-block-components-form .wc-block-components-text-input input[type=number], .wc-block-components-form .wc-block-components-text-input input[type=password], .wc-block-components-form .wc-block-components-text-input input[type=tel], .wc-block-components-form .wc-block-components-text-input input[type=text], .wc-block-components-form .wc-block-components-text-input input[type=url], .wc-block-components-text-input input[type=email], .wc-block-components-text-input input[type=number], .wc-block-components-text-input input[type=password], .wc-block-components-text-input input[type=tel], .wc-block-components-text-input input[type=text], .wc-block-components-text-input input[type=url] {
+    @include fluid-text(16, 14);
+    border-color: #909090  !important;
+    background-color: transparent  !important;
+  }
 
-.wc-block-components-notice-banner.is-error {
-  @include fluid-text(16, 14);
-  background-color: #F4E0E9 !important;
-  border-color: transparent !important;
-  border-radius: var(--border-radius-m) !important;
-  color: var(--color-black) !important;
-  font-weight: 500 !important;
-
-  @include mobile {
+  & .wc-block-components-notice-banner.is-error {
+    @include fluid-text(16, 14);
+    background-color: #F4E0E9 !important;
+    border-color: transparent !important;
     border-radius: var(--border-radius-m) !important;
-  }
-}
+    color: var(--color-black) !important;
+    font-weight: 500 !important;
 
-.wp-block-woocommerce-checkout-order-summary-block {
-  padding: rem(30) !important;
-  border-radius: var(--border-radius-m);
-  background-color: var(--color-black-05) !important;
-
-  @include mobile {
-    border-radius: var(--border-radius-s);
+    @include mobile {
+      border-radius: var(--border-radius-m) !important;
+    }
   }
+
+  & .wp-block-woocommerce-checkout-order-summary-block {
+    padding: rem(30) !important;
+    border-radius: var(--border-radius-m);
+    background-color: var(--color-black-05) !important;
+    border: none !important;
+
+    @include mobile {
+      border-radius: var(--border-radius-s);
+    }
+  }
+
+  & .wc-block-components-form .wc-block-components-checkout-step::after {
+    display: none !important;
+  }
+
+  & .wp-block-woocommerce-checkout-order-summary-block.checkout-order-summary-block-fill-wrapper {
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
+    left: -999px;
+  }
+
+  &__title {
+    margin-top: fluid(60, 32);
+    margin-bottom: fluid(36, 1);
+  }
+
+  @include tablet {
+    & .wc-block-components-form .wc-block-checkout__order-notes.wc-block-components-checkout-step {
+      margin-bottom: 0px;
+
+    }
+    & .wc-block-checkout__actions {
+      padding-top: 0px;
+    }
+
+    & .wc-block-checkout__terms.wc-block-checkout__terms--with-separator {
+      padding-top: 20px;
+    }
+  }
+
 }

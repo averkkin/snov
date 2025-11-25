@@ -109,4 +109,9 @@
 
 
   }
+
+  &__all-products {
+    flex-direction: column;
+    gap: fluid(60, 40);
+  }
 }

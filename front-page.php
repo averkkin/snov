@@ -18,21 +18,15 @@ get_header();
 
 <main class="content">
 
-    <section class="hero">
+    <section class="hero three-images">
 
-        <div class="hero__images hero-desktop">
-            <img src="<?php echo get_template_directory_uri();?>/assets/images/img1.jpg" alt="Подушки" width="505" height="717">
-            <img src="<?php echo get_template_directory_uri();?>/assets/images/img2.jpg" alt="Одеяла" width="502" height="717">
-            <img src="<?php echo get_template_directory_uri();?>/assets/images/img3.jpg" alt="Подушки" width="505" height="717">
-        </div>
-
-        <div class="hero__images js-hero-slider swiper">
+        <div class="three-images js-hero-slider swiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <img src="<?php echo get_template_directory_uri();?>/assets/images/img1.jpg" alt="Подушки" width="505" height="717">
                 </div>
                 <div class="swiper-slide">
-                    <img src="<?php echo get_template_directory_uri();?>/assets/images/img2.jpg" alt="Одеяла" width="502" height="717">
+                    <img src="<?php echo get_template_directory_uri();?>/assets/images/img5.jpg" alt="Одеяла" width="502" height="717">
                 </div>
                 <div class="swiper-slide">
                     <img src="<?php echo get_template_directory_uri();?>/assets/images/img3.jpg" alt="Подушки" width="505" height="717">
@@ -40,9 +34,11 @@ get_header();
             </div>
 
             <div class="swiper-pagination swiper-pagination-hero"></div>
+
         </div>
 
-        <a href="/shop"><button class="btn btn--white hero__btn" type="button" aria-label="Перейти в каталог">Перейти в каталог</button></a>
+        <a href="/shop" class="hero__btn"><button class="btn btn--white" type="button" aria-label="Перейти в каталог">Перейти в каталог</button></a>
+
     </section>
 
     <section class="snov container">
@@ -60,7 +56,7 @@ get_header();
                     кажется сон, тем более
                     глубокий смысл он несет
                 </p>
-                <span>Зигмунд Фрейд</span>
+<!--                <span>Зигмунд Фрейд</span>-->
             </div>
 
         </div>

@@ -31,7 +31,7 @@ export default function tabsCategory() {
                 );
 
                 if (activeBlock) {
-                    activeBlock.style.display = 'block';
+                    activeBlock.style.display = 'flex';
                 }
             });
         });
