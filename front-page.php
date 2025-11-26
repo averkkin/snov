@@ -79,20 +79,20 @@ get_header();
         <h2 class="h2 h2--white h2--large container image-block__h2">
             Одеяла
         </h2>
-        <img src="<?php echo get_template_directory_uri();?>/assets/images/blankets.jpg" alt="Одеяла" width="1512" height="800">
+        <img src="<?php echo get_template_directory_uri();?>/assets/images/green.jpg" alt="Одеяла" width="1512" height="800" style="object-position: center top">
     </section>
 
     <?php render_category_slider('Одеяла', 'odeyalo');?>
 
     <!--Комплекты постельного белья-->
-<!--    <section class="image-block">-->
-<!--        <h2 class="h2 h2--white h2--large container image-block__h2">-->
-<!--            Комплекты постельного белья-->
-<!--        </h2>-->
-<!--        <img src="--><?php //echo get_template_directory_uri();?><!--/assets/images/Bedding%20sets.jpg" alt="Комплекты постельного белья" width="1512" height="800">-->
-<!--    </section>-->
+    <section class="image-block complect">
+        <h2 class="h2 h2--white h2--large container image-block__h2 complect__h2">
+            Комплекты постельного белья
+        </h2>
+        <img src="<?php echo get_template_directory_uri();?>/assets/images/Bedding%20sets.jpg" alt="Комплекты постельного белья" width="1512" height="800">
+    </section>
 
-<!--    --><?php //render_category_slider('Комплекты постельного белья', 'komplekt-postelnogo-belia');?>
+    <?php render_category_slider('Комплекты постельного белья', 'komplekt-postelnogo-belia');?>
 
     <!--Наволочки-->
     <section class="image-block">

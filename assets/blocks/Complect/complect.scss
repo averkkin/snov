@@ -1,0 +1,8 @@
+@use '../../styles/helpers' as *;
+
+.complect {
+
+  &__h2 {
+    max-width: fluid(503, 200);
+  }
+}

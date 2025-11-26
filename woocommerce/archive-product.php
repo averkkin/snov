@@ -159,22 +159,34 @@ do_action( 'woocommerce_shop_loop_header' );
         </div>
     </section>
 
-<!--    <section class="catalog__category">-->
-<!--        <div class="catalog__category-head">-->
-<!--            <h3 class="h3 catalog__h3">Комплекты</h3>-->
-<!--            <div class="catalog__type-product">-->
-<!--                <div class="catalog__type-item">-->
-<!--                    <span class="dot"></span>-->
-<!--                    <span class="type">Однотонные</span>-->
-<!--                </div>-->
-<!--                <div class="catalog__type-item">-->
-<!--                    <span class="dot"></span>-->
-<!--                    <span class="type">Микс</span>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        --><?php //render_wc_category_products('complect'); ?>
-<!--    </section>-->
+    <section class="catalog__category" id="complect">
+        <div class="catalog__category-head">
+            <h3 class="h3 catalog__h3">Комплекты</h3>
+            <div class="catalog__type-product">
+                <div class="catalog__type-item" data-tab="all-complect">
+                    <span class="dot"></span>
+                    <span class="type">Все комплекты</span>
+                </div>
+                <div class="catalog__type-item" data-tab="plain">
+                    <span class="dot"></span>
+                    <span class="type">Однотонные</span>
+                </div>
+                <div class="catalog__type-item" data-tab="mix">
+                    <span class="dot"></span>
+                    <span class="type">Микс</span>
+                </div>
+            </div>
+        </div>
+        <div class="catalog__loop catalog__all-products" data-category="all-complect">
+            <?php render_wc_category_products('komplekt-postelnogo-belia'); ?>
+        </div>
+        <div class="catalog__loop" data-category="plain">
+            <?php render_wc_category_products('plain'); ?>
+        </div>
+        <div class="catalog__loop" data-category="mix">
+            <?php render_wc_category_products('mix'); ?>
+        </div>
+    </section>
 
     <section class="catalog__category" id="navolochka">
         <div class="catalog__category-head">

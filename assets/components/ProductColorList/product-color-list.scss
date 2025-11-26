@@ -32,6 +32,14 @@
       border: 1px solid rgba(0,0,0,0.1);
     }
 
+    .dot.mix {
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-image: var(--mix-gradient);
+      border-color: rgba(0,0,0,0.15);
+      background-clip: padding-box !important;
+    }
+
     &.active {
       border-color: var(--color-black);
       opacity: 1;

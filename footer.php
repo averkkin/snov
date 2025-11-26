@@ -50,7 +50,7 @@
             <div class="contact">
 
                     <span class="contact__name">Телефон:</span>
-                    <a class="footer__contact-value contact__value" href="tel:+7 (495) 525-40-10">+7 (495) 525-40-10</a>
+                    <a class="footer__contact-value contact__value" href="tel:+7 (495) 149-64-24">+7 (495) 149-64-24</a>
 
                     <span class="contact__name">Почта:</span>
                     <a class="contact__value" href="mailto:info@snov.group">info@snov.group</a>

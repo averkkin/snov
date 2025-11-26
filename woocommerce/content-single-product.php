@@ -99,6 +99,8 @@ if (post_password_required()) {
             </div><!-- .product-page__left-col -->
             <div class="product-info">
                 <div class="product-info__header">
+                    <?php snov_render_product_parameters(); ?>
+
                     <div class="product-info__category">
                         <?php
                         echo get_parent_product_category(get_the_ID());
@@ -110,10 +112,13 @@ if (post_password_required()) {
                     </div>
                     <div class="product-info__header--inner">
                         <?php the_title('<h1 class="product_title entry-title product-info__title">', '</h1>'); ?>
-                        <div class="product-info__price" data-default-price="<?php echo esc_attr( $product->get_price_html() ); ?>">
-                            <?php
+                        <div class="product-info__price"
+                             data-default-price="<?php echo esc_attr($product->get_price_html()); ?>">
+                            <div class="price-new">
+                                <?php
                                 do_action('custom_price_hook');
-                            ?>
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -127,8 +132,8 @@ if (post_password_required()) {
                     <!-- Цвет (ссылки на другие товары) -->
                     <div class="product-info__colors">
                         <span>Цвет:</span>
-                        <?php
 
+                        <?php
                         $color_links = $product->get_meta('_snov_color_links');
 
                         if ($color_links) {
@@ -142,22 +147,34 @@ if (post_password_required()) {
                                 $color_product = wc_get_product($id);
                                 if (!$color_product) continue;
 
+                                // Название
                                 $color_custom_name = get_post_meta($id, '_snov_color_name', true);
-                                $color_name = $color_custom_name ? $color_custom_name : $color_product->get_name();
-                                $color_hex = get_post_meta($id, '_snov_color_hex', true);
+                                $color_name = $color_custom_name ?: $color_product->get_name();
 
-                                if (!$color_hex) {
-                                    $color_hex = '#ccc'; // fallback
+                                // Цвета
+                                $hex1 = get_post_meta($id, '_snov_color_hex', true);
+                                $hex2 = get_post_meta($id, '_snov_color_hex2', true);
+
+                                if (!$hex1) $hex1 = '#ccc';
+
+                                if ($hex1 && $hex2) {
+                                    // Микс
+                                    $class = 'mix';
+                                    $style = 'background: linear-gradient(90deg, ' . $hex1 . ' 50%, ' . $hex2 . ' 50%);';
+                                } else {
+                                    // Одиночный цвет
+                                    $class = '';
+                                    $style = 'background:' . $hex1 . ';';
                                 }
 
+                                // Активный
                                 $active = ($id == $product->get_id()) ? ' active' : '';
 
                                 echo '
-                    <a href="' . get_permalink($id) . '" class="product-color-item' . $active . '">
-                        <span class="dot" style="background:' . esc_attr($color_hex) . '"></span>
-                        <span class="name">' . esc_html($color_name) . '</span>
-                    </a>
-                ';
+                                <a href="' . get_permalink($id) . '" class="product-color-item' . $active . '">
+                                    <span class="dot ' . $class . '" style="' . $style . '"></span>
+                                    <span class="name">' . esc_html($color_name) . '</span>
+                                </a>';
                             }
 
                             echo '</div>';
@@ -216,18 +233,18 @@ if (post_password_required()) {
 </main>
 <script type="text/javascript">
 
-    jQuery(function($){
+    jQuery(function ($) {
 
         const headerPrice = $('.product-info__price');
         const variationForm = $('form.variations_form');
 
-        variationForm.on('found_variation', function(event, variation){
+        variationForm.on('found_variation', function (event, variation) {
             if (variation && variation.price_html) {
                 headerPrice.html(variation.price_html);
             }
         });
 
-        variationForm.on('hide_variation', function(){
+        variationForm.on('hide_variation', function () {
 
             const fallbackVariationPrice = $('.single_variation_wrap .woocommerce-variation-price .price').html();
 
@@ -247,3 +264,9 @@ if (post_password_required()) {
 
 </script>
 <?php do_action('woocommerce_after_single_product'); ?>
+
+<style>
+    .woocommerce-notices-wrapper {
+        display: none;
+    }
+</style>

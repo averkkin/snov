@@ -100,3 +100,37 @@ add_action('save_post_product', function($post_id){
     }
 
 });
+
+// вывод
+/**
+ * Рендер параметров товара на фронтенде
+ */
+function snov_render_product_parameters( $product_id = null ) {
+    if (!$product_id) {
+        $product_id = get_the_ID();
+    }
+
+    // включено ли отображение
+    $enabled = get_post_meta($product_id, '_snov_parameters_enabled', true);
+    if ($enabled !== '1') {
+        return; // ничего не выводим
+    }
+
+    // сами строки
+    $items = get_post_meta($product_id, '_snov_parameters_items', true);
+    if (!is_array($items) || empty($items)) {
+        return;
+    }
+
+    echo '<div class="parameters">';
+
+    foreach ($items as $item) {
+        if (trim($item) === '') continue;
+
+        echo '<div class="parameters__item">'
+                . esc_html($item) .
+                '</div>';
+    }
+
+    echo '</div>';
+}

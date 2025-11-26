@@ -55,6 +55,16 @@ add_action('woocommerce_product_data_panels', function() {
                 'value'       => get_post_meta($post->ID, '_snov_color_hex', true),
             ]);
 
+            // НОВОЕ ПОЛЕ: Второй HEX цвет
+            woocommerce_wp_text_input([
+                    'id'          => '_snov_color_hex2',
+                    'label'       => 'HEX цвет 2 (для микса)',
+                    'placeholder' => '#d7c4c0',
+                    'desc_tip'    => true,
+                    'description' => 'Оставьте пустым, если цвет один.',
+                    'value'       => get_post_meta($post->ID, '_snov_color_hex2', true),
+            ]);
+
             // НОВОЕ ПОЛЕ: Название цвета
             woocommerce_wp_text_input([
                 'id'          => '_snov_color_name',
@@ -64,6 +74,7 @@ add_action('woocommerce_product_data_panels', function() {
                 'description' => 'Отображаемое имя цвета.',
                 'value'       => get_post_meta($post->ID, '_snov_color_name', true),
             ]);
+
             ?>
 
         </div>
@@ -84,6 +95,10 @@ add_action('woocommerce_admin_process_product_object', function($product) {
 
     if (isset($_POST['_snov_color_name'])) {
         $product->update_meta_data('_snov_color_name', sanitize_text_field($_POST['_snov_color_name']));
+    }
+
+    if (isset($_POST['_snov_color_hex2'])) {
+        $product->update_meta_data('_snov_color_hex2', sanitize_hex_color($_POST['_snov_color_hex2']));
     }
 });
 

@@ -15,7 +15,7 @@ get_header();
         <div class="company-details__contact">
 
             <a href="mailto:info@snov.group">info@snov.group</a>
-            <a href="tel:+7 (495) 525-40-10">+7 (495) 525-40-10</a>
+            <a href="tel:+7 (495) 149-64-24">+7 (495) 149-64-24</a>
 
         </div>
 
